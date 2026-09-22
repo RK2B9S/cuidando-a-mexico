@@ -130,11 +130,18 @@ figcaption { margin-top: var(--e-2); max-width: var(--medida); }
 .barra-int { display: flex; align-items: center; justify-content: space-between; min-height: var(--barra-alto); gap: var(--e-4); }
 .barra-nombre { font-family: var(--display); font-size: 1.25rem; font-variation-settings: "opsz" 24; color: var(--tinta); text-decoration: none; }
 .barra-nombre:hover { text-decoration: underline; }
+@media (max-width: 599px) { .barra-int { gap: var(--e-3); } .barra-nombre { font-size: 1rem; white-space: nowrap; } }
 .barra-progreso { position: absolute; left: 0; top: 0; height: 2px; width: 100%; background: var(--acento); transform-origin: 0 50%; transform: scaleX(0); }
 @supports (animation-timeline: scroll()) {
   .barra-progreso { animation: progreso linear both; animation-timeline: scroll(root); }
   @keyframes progreso { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 }
+.tema { flex: 0 0 auto; display: inline-flex; align-items: center; gap: var(--e-2); min-height: 44px; padding: 0 var(--e-3); margin-left: auto; border: 1px solid var(--linea); border-radius: 22px; background: transparent; color: var(--tinta); font: inherit; font-size: var(--t-etiqueta); letter-spacing: 0.04em; text-transform: uppercase; cursor: pointer; }
+.tema[hidden] { display: none; }
+.tema:hover { border-color: var(--tinta-2); }
+.tema-icono { color: var(--acento); font-size: 0.9em; line-height: 1; }
+@media (max-width: 599px) { .tema-etiqueta { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; } .tema { padding: 0; width: 44px; justify-content: center; } }
+
 .indice { position: relative; }
 .indice summary { cursor: pointer; list-style: none; padding: var(--e-2) 0; font-weight: 700; font-size: var(--t-fuente); letter-spacing: 0.04em; text-transform: uppercase; min-height: 24px; }
 .indice summary::-webkit-details-marker { display: none; }
@@ -246,11 +253,37 @@ figcaption { margin-top: var(--e-2); max-width: var(--medida); }
 .dof-lectura { margin: 0; }
 
 /* 9. Tres razones --------------------------------------------------------- */
-.razones { list-style: none; display: grid; gap: var(--e-6); }
-.razon { display: grid; grid-template-columns: auto 1fr; gap: var(--e-4); align-items: start; border-top: 1px solid var(--linea); padding-top: var(--e-5); }
+.razones { list-style: none; display: grid; gap: 0; }
+.razon { display: grid; grid-template-columns: auto 1fr; gap: var(--e-4); align-items: start; padding-top: var(--e-5); padding-bottom: var(--e-5); }
+
+/* La cabecera se queda fija (título, entrada y la línea) mientras pasan las razones;
+   se suelta cuando termina la última. Cada razón ocupa al menos una pantalla. */
+.razones-cabeza { padding-bottom: var(--e-4); border-bottom: 1px solid var(--linea); background: var(--fondo); }
+.razones-paso { color: var(--acento); }
+.razones-paso[hidden] { display: none; }
+.js .razones-cabeza { position: sticky; top: var(--barra-alto); z-index: 4; }
+/* Al entrar en los pasos, la cabecera se encoge para dejarle la pantalla a cada punto. */
+.js .razones-cabeza .entrada { transition: opacity var(--dur-1) var(--curva); }
+.js .razones-cabeza.compacta .entrada { display: none; }
+.js .razones-cabeza.compacta h2 { font-size: var(--t-2); }
+.js .razon { min-height: calc(100svh - var(--barra-alto) - var(--cabeza-alto, 240px)); scroll-snap-align: center; scroll-margin-block: var(--e-4); align-content: center; }
+.js .razon > * { transition: opacity var(--dur-2) var(--curva), transform var(--dur-2) var(--curva); }
+.js .razon.espera > * { opacity: 0; transform: translateY(10px); }
+/* El ajuste por pasos solo se enciende mientras la sección está en pantalla; fuera de ella el scroll es normal. */
+html.js { scroll-padding-top: calc(var(--barra-alto) + var(--cabeza-alto, 240px)); }
+html.js.escena-activa { scroll-snap-type: y mandatory; }
+@media (prefers-reduced-motion: reduce) {
+  .js .razon.espera > * { opacity: 1; transform: none; }
+  html.js.escena-activa { scroll-snap-type: none; }
+}
 .razon-num { color: var(--acento); opacity: 0.55; line-height: 0.8; }
 .razon h3 { margin-bottom: var(--e-3); }
-.razon-quien { border-left: 3px solid var(--linea); padding-left: var(--e-3); }
+.razon-quien { border-left: 3px solid var(--linea); padding-left: var(--e-3); margin-top: var(--e-4); }
+.razon-quien summary { cursor: pointer; list-style: none; font-weight: 700; min-height: 44px; display: flex; align-items: center; gap: var(--e-2); }
+.razon-quien summary::-webkit-details-marker { display: none; }
+.razon-quien summary::after { content: "+"; color: var(--acento); font-size: 1.2em; }
+.razon-quien[open] summary::after { content: "2"; }
+.razon-quien p { margin: 0 0 var(--e-3); }
 @media (min-width: 900px) {
   .razon { grid-template-columns: 1fr minmax(0, var(--medida)) 1fr; gap: var(--e-6); }
   .razon .razon-num { grid-column: 1; justify-self: end; }
@@ -264,7 +297,7 @@ figcaption { margin-top: var(--e-2); max-width: var(--medida); }
 .pista { list-style: none; display: flex; gap: var(--e-4); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); padding-bottom: var(--e-3); -webkit-overflow-scrolling: touch; }
 .pista::-webkit-scrollbar { height: 8px; }
 .pista::-webkit-scrollbar-thumb { background: var(--linea); }
-.pieza { flex: 0 0 min(84vw, 380px); scroll-snap-align: start; background: var(--fondo); border: 1px solid var(--linea); border-radius: 4px; padding: var(--e-5) var(--e-4) var(--e-4); position: relative; display: flex; flex-direction: column; gap: var(--e-3); min-height: 320px; }
+.pieza { flex: 0 0 min(84vw, 380px); scroll-snap-align: none start; background: var(--fondo); border: 1px solid var(--linea); border-radius: 4px; padding: var(--e-5) var(--e-4) var(--e-4); position: relative; display: flex; flex-direction: column; gap: var(--e-3); min-height: 320px; }
 .pieza-num { position: absolute; right: var(--e-3); top: 0; color: var(--acento); opacity: 0.35; font-size: 5rem; line-height: 1; }
 .pieza-rotulo { display: block; font-size: var(--t-etiqueta); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 0.2em; }
 .mito { font-family: var(--display); font-size: var(--t-2); font-variation-settings: "opsz" 36; line-height: 1.2; margin: 0; padding-right: 2.5rem; }
@@ -368,4 +401,11 @@ figcaption { margin-top: var(--e-2); max-width: var(--medida); }
     scroll-behavior: auto !important;
   }
   .js .eslogan-1, .js .eslogan-2 { opacity: 1; transform: none; animation: none; }
+}
+
+
+/* En pantallas altas y anchas el bloque "Quién la atiende" no necesita ocultarse. */
+@media (min-width: 900px) and (min-height: 800px) {
+  .razon-quien summary { display: none; }
+  .razon-quien > p { display: block; }
 }

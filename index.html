@@ -10,74 +10,89 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&display=swap">
 <link rel="stylesheet" href="css/estilos.css">
-<script>document.documentElement.classList.add('js');</script>
+<script>
+(function () {
+  var raiz = document.documentElement;
+  raiz.classList.add('js');
+  try {
+    var guardado = localStorage.getItem('tema');
+    if (guardado === 'claro' || guardado === 'oscuro') {
+      raiz.setAttribute('data-theme', guardado === 'claro' ? 'light' : 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
 </head>
 <body>
 <a class="saltar" href="#contenido">Ir al contenido</a>
 
 <header class="barra">
-  <div class="barra-progreso" aria-hidden="true"></div>
-  <div class="contenedor barra-int">
-    <a class="barra-nombre" href="#inicio">Cuidando a México, A.C.</a>
-    <nav class="barra-nav" aria-label="Índice de la página">
-      <details class="indice">
-        <summary>Índice</summary>
-        <ul>
-          <li><a href="#territorio">El lobo</a></li>
-          <li><a href="#razones">En peligro</a></li>
-          <li><a href="#asociacion">La asociación</a></li>
-          <li><a href="#fuentes">Fuentes</a></li>
-        </ul>
-      </details>
-    </nav>
-  </div>
+ <div class="barra-progreso" aria-hidden="true"></div>
+ <div class="contenedor barra-int">
+ <a class="barra-nombre" href="#inicio">Cuidando a México, A.C.</a>
+ <button class="tema" type="button" hidden>
+ <span class="tema-icono" aria-hidden="true">●</span>
+ <span class="tema-etiqueta">Modo claro</span>
+ </button>
+ <nav class="barra-nav" aria-label="Índice de la página">
+ <details class="indice">
+ <summary>Índice</summary>
+ <ul>
+ <li><a href="#territorio">El lobo</a></li>
+ <li><a href="#razones">En peligro</a></li>
+ <li><a href="#asociacion">La asociación</a></li>
+ <li><a href="#fuentes">Fuentes</a></li>
+ </ul>
+ </details>
+ </nav>
+ </div>
 </header>
 
 <main id="contenido">
 
 <!-- 1. Apertura -->
 <section class="apertura" id="inicio" aria-labelledby="t-inicio">
-  <div class="contenedor apertura-texto">
-    <h1 id="t-inicio" class="apertura-pregunta">¿Cuántos lobos mexicanos viven en libertad en México?</h1>
-    <p class="apertura-cifra"><span class="cifra">35 a 40</span></p>
-    <p class="fuente">En la sierra de Chihuahua <a href="#f15">(Arellano, 2026, párr. 1)</a>.</p>
-    <p class="eslogan"><span class="eslogan-1">Volvió.</span> <span class="eslogan-2">Conócelo.</span></p>
-    <p class="apertura-quien">Cuidando a México, A.C. es una asociación de estudiantes que da a conocer al lobo gris mexicano.</p>
-    <p class="apertura-bajar"><a href="#territorio">Empieza por su territorio</a></p>
-  </div>
-  <figure class="apertura-foto">
-    <picture>
-      <source srcset="img/f1-lobo-corriendo.webp" type="image/webp">
-      <img src="img/f1-lobo-corriendo.jpg" width="1600" height="1066" alt="Lobo mexicano de pelaje gris y café corriendo sobre nieve, con la mirada al frente." fetchpriority="high">
-    </picture>
-    <figcaption class="fuente">Lobo mexicano. Jim Clark / U.S. Fish and Wildlife Service, 2001. Dominio público. <a href="#foto-f1">Crédito completo</a>.</figcaption>
-  </figure>
+ <div class="contenedor apertura-texto">
+ <h1 id="t-inicio" class="apertura-pregunta">¿Cuántos lobos mexicanos viven en libertad en México?</h1>
+ <p class="apertura-cifra"><span class="cifra">35 a 40</span></p>
+ <p class="fuente">En la sierra de Chihuahua.</p>
+ <p class="eslogan"><span class="eslogan-1">Volvió.</span> <span class="eslogan-2">Conócelo.</span></p>
+ <p class="apertura-quien">Cuidando a México, A.C. es una asociación de estudiantes que da a conocer al lobo gris mexicano.</p>
+ <p class="apertura-bajar"><a href="#territorio">Empieza por su territorio</a></p>
+ </div>
+ <figure class="apertura-foto">
+ <picture>
+ <source srcset="img/f1-lobo-corriendo.webp" type="image/webp">
+ <img src="img/f1-lobo-corriendo.jpg" width="1600" height="1066" alt="Lobo mexicano de pelaje gris y café corriendo sobre nieve, con la mirada al frente." fetchpriority="high">
+ </picture>
+ <figcaption class="fuente">Lobo mexicano. Jim Clark / U.S. Fish and Wildlife Service, 2001. Dominio público. <a href="#foto-f1">Crédito completo</a>.</figcaption>
+ </figure>
 </section>
 
 <!-- 2. Territorio -->
 <section class="seccion" id="territorio" aria-labelledby="t-territorio">
-  <div class="contenedor">
-    <p class="etiqueta">El lobo</p>
-    <h2 id="t-territorio">El 90 por ciento de su territorio era México</h2>
-    <p class="entrada">El lobo gris mexicano (<i lang="la">Canis lupus baileyi</i>) es la subespecie más pequeña de lobo gris <a class="fuente" href="#f1">(CONANP, 2009, p. 14)</a>.</p>
+ <div class="contenedor">
+ <p class="etiqueta">El lobo</p>
+ <h2 id="t-territorio">El 90 por ciento de su territorio era México</h2>
+ <p class="entrada">El lobo gris mexicano (<i lang="la">Canis lupus baileyi</i>) es la subespecie más pequeña de lobo gris.</p>
 
-    <div class="dos">
-      <div class="prosa">
-        <dl class="ficha">
-          <div><dt>Peso</dt><dd>Entre 21 y 41 kilogramos <a class="fuente" href="#f1">(CONANP, 2009, p. 14)</a>.</dd></div>
-          <div><dt>Medidas</dt><dd>Entre 140 y 180 centímetros del hocico a la cola; altura hasta el lomo de 65 a 80 centímetros <a class="fuente" href="#f1">(CONANP, 2009, p. 14)</a>.</dd></div>
-          <div><dt>Dieta en México</dt><dd>25 presas silvestres y tres domésticas; la presa principal es el venado cola blanca <a class="fuente" href="#f2">(Reyes-Díaz et al., 2022, sección "Resumen")</a>.</dd></div>
-          <div><dt>Manada</dt><dd>Organizada alrededor de una pareja reproductiva, los individuos llamados "alfa" <a class="fuente" href="#f1">(CONANP, 2009, p. 15)</a>.</dd></div>
-        </dl>
-        <p>Una subespecie es una población de la misma especie que, por haber vivido separada, tiene rasgos propios. La distribución histórica del lobo gris mexicano abarcó el sur de Estados Unidos, en Arizona, Nuevo México y Texas, y llegó por el sur hasta la cuenca del Valle de México <a class="fuente" href="#f1">(CONANP, 2009, p. 14)</a>. Dentro de México se le conoció en Chihuahua, Coahuila, Nuevo León, Durango, Zacatecas, Aguascalientes, San Luis Potosí, el Bajío y la meseta central, y hasta Oaxaca <a class="fuente" href="#f1">(CONANP, 2009, p. 16)</a>.</p>
-        <p>Según el reportaje de UNAM Global, el 90 por ciento de esa distribución correspondió a territorio mexicano <a class="fuente" href="#f14">(Olguín Lacunza, 2021, sección "La problemática actual")</a>. Hoy, en México, los lobos en libertad están en la sierra de Chihuahua <a class="fuente" href="#f15">(Arellano, 2026, párr. 1)</a>; en Estados Unidos, la recuperación se concentró en Arizona y Nuevo México <a class="fuente" href="#f14">(Olguín Lacunza, 2021, sección "La problemática actual")</a>.</p>
-      </div>
+ <div class="dos">
+ <div class="prosa">
+ <dl class="ficha">
+ <div><dt>Peso</dt><dd>Entre 21 y 41 kilogramos.</dd></div>
+ <div><dt>Medidas</dt><dd>Entre 140 y 180 centímetros del hocico a la cola; altura hasta el lomo de 65 a 80 centímetros.</dd></div>
+ <div><dt>Dieta en México</dt><dd>25 presas silvestres y tres domésticas; la presa principal es el venado cola blanca.</dd></div>
+ <div><dt>Manada</dt><dd>Organizada alrededor de una pareja reproductiva, los individuos llamados "alfa".</dd></div>
+ </dl>
+ <p>Una subespecie es una población de la misma especie que, por haber vivido separada, tiene rasgos propios. La distribución histórica del lobo gris mexicano abarcó el sur de Estados Unidos, en Arizona, Nuevo México y Texas, y llegó por el sur hasta la cuenca del Valle de México. Dentro de México se le conoció en Chihuahua, Coahuila, Nuevo León, Durango, Zacatecas, Aguascalientes, San Luis Potosí, el Bajío y la meseta central, y hasta Oaxaca.</p>
+ <p>Según el reportaje de UNAM Global, el 90 por ciento de esa distribución correspondió a territorio mexicano. Hoy, en México, los lobos en libertad están en la sierra de Chihuahua; en Estados Unidos, la recuperación se concentró en Arizona y Nuevo México.</p>
+ </div>
 
-      <figure class="mapa-figura">
-        <svg class="mapa" viewBox="440 1090 720 700" role="img" aria-labelledby="mapa-titulo mapa-desc">
-          <title id="mapa-titulo">Mapa de México y el suroeste de Estados Unidos con los estados donde el programa oficial registra la distribución histórica del lobo mexicano y las marcas de su presencia actual</title>
-          <desc id="mapa-desc">Estados resaltados: Arizona, Nuevo México y Texas en Estados Unidos; Chihuahua, Coahuila, Nuevo León, Durango, Zacatecas, Aguascalientes, San Luis Potosí y Oaxaca en México. Marcas de presencia actual en la sierra de Chihuahua y en Arizona y Nuevo México.</desc>
-          <g class="mapa-contexto">
+ <figure class="mapa-figura">
+ <svg class="mapa" viewBox="440 1090 720 700" role="img" aria-labelledby="mapa-titulo mapa-desc">
+ <title id="mapa-titulo">Mapa de México y el suroeste de Estados Unidos con los estados donde el programa oficial registra la distribución histórica del lobo mexicano y las marcas de su presencia actual</title>
+ <desc id="mapa-desc">Estados resaltados: Arizona, Nuevo México y Texas en Estados Unidos; Chihuahua, Coahuila, Nuevo León, Durango, Zacatecas, Aguascalientes, San Luis Potosí y Oaxaca en México. Marcas de presencia actual en la sierra de Chihuahua y en Arizona y Nuevo México.</desc>
+ <g class="mapa-contexto">
 <path d="M565,1221 486,1097 507,1021 436,999 434,1010 429,1026 420,1035 425,1056 422,1062 421,1076 423,1086 428,1094 428,1098 427,1102 431,1109 435,1109 437,1103 440,1103 443,1107 439,1110 438,1119 434,1113 432,1113 431,1117 432,1130 438,1135 439,1139 439,1141 435,1144 435,1149 437,1160 446,1179 447,1184 451,1189 447,1200 448,1202 459,1210 466,1212 470,1218 478,1226 482,1225 485,1226 487,1236 492,1240 503,1257 504,1273 516,1275 550,1279 551,1277 557,1276 557,1270 554,1268 555,1262 561,1257 563,1246 572,1240 566,1231 565,1221zM451,1219 455,1219 456,1222 455,1222 451,1219zM463,1224 460,1223 458,1219 465,1222 465,1224 463,1224zM484,1247 483,1247 482,1242 485,1244 484,1247zM483,1257 481,1256 479,1251 479,1259 481,1260 483,1257z"/>
 <path d="M613,1050 507,1021 520,1025 507,1021 493,1072 486,1097 565,1221 570,1195 575,1194 579,1198 583,1194 613,1050z"/>
 <path d="M613,1050 666,1062 662,1087 700,1093 697,1107 700,1093 684,1192 587,1175 613,1050zM646,1068 643,1068 641,1072 639,1073 636,1069 637,1063 634,1061 629,1062 631,1069 633,1071 634,1075 634,1078 642,1090 645,1090 647,1085 644,1077 644,1074 648,1073 646,1068z"/>
@@ -125,501 +140,504 @@
 <path style="--i:9" d="M811,1594 816,1589 817,1586 815,1582 817,1578 812,1575 802,1576 797,1567 794,1559 798,1555 816,1543 827,1527 830,1527 835,1533 836,1541 838,1542 838,1547 840,1551 839,1558 840,1560 842,1561 846,1559 848,1560 848,1562 851,1568 848,1571 849,1572 858,1576 862,1576 867,1580 873,1582 882,1582 885,1584 882,1590 879,1591 881,1596 880,1599 877,1601 880,1604 879,1606 881,1610 880,1611 871,1610 865,1601 857,1604 855,1602 840,1599 834,1602 819,1595 811,1594z"><title>San Luis Potosí</title></path>
 <path style="--i:10" d="M881,1733 885,1732 886,1729 891,1726 891,1719 893,1717 887,1711 884,1706 884,1698 888,1694 887,1693 889,1692 896,1692 901,1684 906,1690 916,1686 926,1674 931,1676 934,1682 945,1687 946,1691 943,1696 945,1698 949,1699 958,1695 961,1702 965,1705 966,1709 977,1711 990,1711 990,1718 986,1724 986,1740 969,1735 931,1750 901,1743 886,1737 881,1733z"><title>Oaxaca</title></path>
 </g>
-          <g class="mapa-actual">
-            <circle cx="690" cy="1415" r="9"/>
-            <text x="704" y="1420">sierra de Chihuahua</text>
-            <circle cx="617" cy="1262" r="9"/>
-            <circle cx="733" cy="1268" r="9"/>
-            <text x="560" y="1240">Arizona y Nuevo México</text>
-          </g>
-        </svg>
-        <figcaption class="fuente">Estados en los que el programa oficial registra su distribución histórica <a href="#f1">(CONANP, 2009, pp. 14 y 16)</a>; no es un polígono de distribución. La fuente también nombra "el Bajío y la meseta central" y "la cuenca del Valle de México", que no son estados y no se colorean. Marcas: sierra de Chihuahua <a href="#f15">(Arellano, 2026, párr. 1)</a>; Arizona y Nuevo México <a href="#f14">(Olguín Lacunza, 2021, sección "La problemática actual")</a>. El mapa de distribución histórica de CONABIO está en Enciclovida <a href="#d1">(CONABIO, s.f.)</a>. Mapa base: NuclearVacuum, CC BY-SA 3.0, Wikimedia Commons; recortado y coloreado (<a href="#foto-m1">crédito</a>).</figcaption>
-      </figure>
-    </div>
+ <g class="mapa-actual">
+ <circle cx="690" cy="1415" r="9"/>
+ <text x="704" y="1420">sierra de Chihuahua</text>
+ <circle cx="617" cy="1262" r="9"/>
+ <circle cx="733" cy="1268" r="9"/>
+ <text x="560" y="1240">Arizona y Nuevo México</text>
+ </g>
+ </svg>
+ <figcaption class="fuente">Estados en los que el programa oficial registra su distribución histórica; no es un polígono de distribución. La fuente también nombra "el Bajío y la meseta central" y "la cuenca del Valle de México", que no son estados y no se colorean. Marcas: sierra de Chihuahua; Arizona y Nuevo México. El mapa de distribución histórica de CONABIO está en Enciclovida. Mapa base: NuclearVacuum, CC BY-SA 3.0, Wikimedia Commons; recortado y coloreado (<a href="#foto-m1">crédito</a>).</figcaption>
+ </figure>
+ </div>
 
-    <figure class="foto-ancha">
-      <picture>
-        <source srcset="img/f8-sierra-cerro-grande.webp" type="image/webp">
-        <img src="img/f8-sierra-cerro-grande.jpg" width="1600" height="1200" alt="Vista de la Sierra Madre Occidental desde la cumbre del Cerro Grande: laderas con matorral y encinos y cadenas de cerros hasta el horizonte." loading="lazy">
-      </picture>
-      <figcaption class="fuente">Sierra Madre Occidental desde el Cerro Grande, al oeste de la ciudad de Chihuahua. Levi bernardo, 2018. CC BY-SA 3.0. Recortada. <a href="#foto-f8">Crédito completo</a>.</figcaption>
-    </figure>
-  </div>
+ <figure class="foto-ancha">
+ <picture>
+ <source srcset="img/f8-sierra-cerro-grande.webp" type="image/webp">
+ <img src="img/f8-sierra-cerro-grande.jpg" width="1600" height="1200" alt="Vista de la Sierra Madre Occidental desde la cumbre del Cerro Grande: laderas con matorral y encinos y cadenas de cerros hasta el horizonte." loading="lazy">
+ </picture>
+ <figcaption class="fuente">Sierra Madre Occidental desde el Cerro Grande, al oeste de la ciudad de Chihuahua. Levi bernardo, 2018. CC BY-SA 3.0. Recortada. <a href="#foto-f8">Crédito completo</a>.</figcaption>
+ </figure>
+ </div>
 </section>
 
 <!-- 3. Fue una decisión -->
 <section class="seccion noche" id="decision" aria-labelledby="t-decision">
-  <div class="contenedor">
-    <p class="etiqueta">El exterminio</p>
-    <h2 id="t-decision">Fue una decisión</h2>
-    <p class="entrada">La desaparición del lobo mexicano fue el resultado de una política.</p>
-    <div class="dos dos-invertido">
-      <div class="prosa">
-        <blockquote class="cita">
-          <p>"Nunca antes se empleó a tantos exterminadores de depredadores para destruir a tan pocos animales y producir tan dudosos beneficios"</p>
-          <footer class="fuente"><a href="#f1">(CONANP, 2009, p. 10)</a></footer>
-        </blockquote>
-        <p>La campaña de exterminio surgió en Estados Unidos a principios del siglo XX y llegó a México décadas más tarde <a class="fuente" href="#f14">(Olguín Lacunza, 2021, párr. 3)</a>. El lobo quedó exterminado de vida libre alrededor de 1970, por campañas de erradicación de ambos gobiernos en respuesta al conflicto ganadero <a class="fuente" href="#f1">(CONANP, 2009, p. 11)</a>.</p>
-        <p>Hacia los años setenta quedaban menos de 50 lobos en México, todos en la Sierra Madre Occidental <a class="fuente" href="#f2">(Reyes-Díaz et al., 2022, sección "Introducción")</a>.</p>
-      </div>
-      <figure class="foto-media">
-        <picture>
-          <source srcset="img/f4-lobo-1967.webp" type="image/webp">
-          <img src="img/f4-lobo-1967.jpg" width="1200" height="787" alt="Diapositiva a color de 1967: un lobo mexicano de pie junto a rocas, con el pelaje gris y café y la cabeza vuelta hacia la cámara." loading="lazy">
-        </picture>
-        <figcaption class="fuente">Lobo mexicano fotografiado en marzo de 1967, poco antes de la fecha aproximada, 1970, en que el programa oficial sitúa su exterminio en vida libre <a href="#f1">(CONANP, 2009, p. 11)</a>. La ficha de la foto no indica dónde se tomó. Warren Garst / Colorado State University Libraries, DPLA. CC BY-SA 4.0. <a href="#foto-f4">Crédito completo</a>.</figcaption>
-      </figure>
-    </div>
-  </div>
+ <div class="contenedor">
+ <p class="etiqueta">El exterminio</p>
+ <h2 id="t-decision">Fue una decisión</h2>
+ <p class="entrada">La desaparición del lobo mexicano fue el resultado de una política.</p>
+ <div class="dos dos-invertido">
+ <div class="prosa">
+ <blockquote class="cita">
+ <p>"Nunca antes se empleó a tantos exterminadores de depredadores para destruir a tan pocos animales y producir tan dudosos beneficios"</p>
+ </blockquote>
+ <p>La campaña de exterminio surgió en Estados Unidos a principios del siglo XX y llegó a México décadas más tarde. El lobo quedó exterminado de vida libre alrededor de 1970, por campañas de erradicación de ambos gobiernos en respuesta al conflicto ganadero.</p>
+ <p>Hacia los años setenta quedaban menos de 50 lobos en México, todos en la Sierra Madre Occidental.</p>
+ </div>
+ <figure class="foto-media">
+ <picture>
+ <source srcset="img/f4-lobo-1967.webp" type="image/webp">
+ <img src="img/f4-lobo-1967.jpg" width="1200" height="787" alt="Diapositiva a color de 1967: un lobo mexicano de pie junto a rocas, con el pelaje gris y café y la cabeza vuelta hacia la cámara." loading="lazy">
+ </picture>
+ <figcaption class="fuente">Lobo mexicano fotografiado en marzo de 1967, poco antes de la fecha aproximada, 1970, en que el programa oficial sitúa su exterminio en vida libre. La ficha de la foto no indica dónde se tomó. Warren Garst / Colorado State University Libraries, DPLA. CC BY-SA 4.0. <a href="#foto-f4">Crédito completo</a>.</figcaption>
+ </figure>
+ </div>
+ </div>
 </section>
 
 <!-- 4. Línea de tiempo -->
 <section class="seccion" id="durango" aria-labelledby="t-durango">
-  <div class="contenedor">
-    <p class="etiqueta">El regreso</p>
-    <h2 id="t-durango">Cinco lobos de Durango</h2>
-    <p class="entrada">Todos los lobos mexicanos que existen descienden de unos pocos animales capturados en los años setenta. Esta es la historia, año por año.</p>
+ <div class="contenedor">
+ <p class="etiqueta">El regreso</p>
+ <h2 id="t-durango">Cinco lobos de Durango</h2>
+ <p class="entrada">Todos los lobos mexicanos que existen descienden de unos pocos animales capturados en los años setenta. Esta es la historia, año por año.</p>
 
-    <div class="tiempo">
-      <div class="tiempo-anio" aria-hidden="true">
-        <span class="tiempo-anio-a">1971</span>
-        <span class="tiempo-anio-b"></span>
-      </div>
-      <ol class="tiempo-hechos">
-        <li class="hecho" data-anio="1971">
-          <h3 class="hecho-anio">1971</h3>
-          <p>El Servicio de Pesca y Vida Silvestre de Estados Unidos contrató a Roy McBride, trampero de las campañas de exterminio, para atrapar ejemplares vivos. Con el tiempo capturó cinco lobos en la región de Durango, que formaron el pie de cría, es decir, los animales de los que descienden los demás, conocido como "Linaje McBride" <a class="fuente" href="#f1">(CONANP, 2009, p. 11)</a>.</p>
-          <figure class="hecho-foto">
-            <picture>
-              <source srcset="img/f6-lobos-durango.webp" type="image/webp">
-              <img src="img/f6-lobos-durango.jpg" width="1200" height="802" alt="Dos lobos mexicanos en un recinto con tierra y sombra, uno de pie y otro echado." loading="lazy">
-            </picture>
-            <figcaption class="fuente">Dos lobos mexicanos en cautiverio en el zoológico Sahuatoba, Durango. Vaquita marina, 2026. CC BY-SA 4.0. La foto no tiene relación con los cinco fundadores. <a href="#foto-f6">Crédito completo</a>.</figcaption>
-          </figure>
-        </li>
-        <li class="hecho" data-anio="1976">
-          <h3 class="hecho-anio">1976</h3>
-          <p>Ya extinto en Estados Unidos, el lobo fue incluido en la ley de especies en peligro de ese país, lo que obligó a crear un programa de recuperación <a class="fuente" href="#f1">(CONANP, 2009, p. 11)</a>.</p>
-        </li>
-        <li class="hecho" data-anio="Fundadores">
-          <h3 class="hecho-anio">Los fundadores</h3>
-          <p>Todos los ejemplares actuales descienden de "unos pocos que fueron capturados en los años 70, en el norte de México" <a class="fuente" href="#f1">(CONANP, 2009, p. 19)</a>. Según el reportaje de Mongabay Latam, fueron siete individuos fundadores <a class="fuente" href="#f15">(Arellano, 2026, sección "La fragilidad genética")</a>. El programa describe su acervo génico (el conjunto de genes de la población) como "sumamente pobre" y habla de un cuello de botella <a class="fuente" href="#f1">(CONANP, 2009, p. 19)</a>. Un cuello de botella genético es una pérdida drástica de diversidad genética por descender de muy pocos individuos; su consecuencia es la endogamia, la reproducción entre parientes cercanos.</p>
-        </li>
-        <li class="hecho" data-anio="1998">
-          <h3 class="hecho-anio">1998</h3>
-          <p>Las primeras liberaciones ocurrieron hacia 1998 en Arizona y Nuevo México <a class="fuente" href="#f1">(CONANP, 2009, p. 12)</a>. La reintroducción es la liberación, en un territorio donde la especie desapareció, de ejemplares criados en cautiverio para que vuelvan a vivir en libertad.</p>
-        </li>
-        <li class="hecho" data-anio="2009">
-          <h3 class="hecho-anio">2009</h3>
-          <p>Había más de 300 ejemplares en cautiverio en Estados Unidos y México <a class="fuente" href="#f1">(CONANP, 2009, p. 19)</a>. México todavía no había llevado a cabo la reintroducción <a class="fuente" href="#f1">(CONANP, 2009, p. 12)</a>.</p>
-        </li>
-        <li class="hecho" data-anio="2011">
-          <h3 class="hecho-anio">2011</h3>
-          <p>Comenzaron las liberaciones en México, en Chihuahua <a class="fuente" href="#f14">(Olguín Lacunza, 2021, sección "La problemática actual")</a>.</p>
-        </li>
-        <li class="hecho" data-anio="2014">
-          <h3 class="hecho-anio">2014</h3>
-          <p>Nació la primera camada en vida libre en el país <a class="fuente" href="#f2">(Reyes-Díaz et al., 2022, sección "Introducción")</a>, más de cuarenta años después del exterminio.</p>
-        </li>
-        <li class="hecho" data-anio="2021">
-          <h3 class="hecho-anio">2021</h3>
-          <p>En México se estimaban unos 35 individuos, con 15 liberaciones en diez años; en Estados Unidos había alrededor de 160 lobos <a class="fuente" href="#f14">(Olguín Lacunza, 2021, sección "La problemática actual")</a>.</p>
-        </li>
-        <li class="hecho" data-anio="2026">
-          <h3 class="hecho-anio">2026</h3>
-          <p>Mongabay Latam calcula entre 35 y 40 lobos en la sierra de Chihuahua <a class="fuente" href="#f15">(Arellano, 2026, párr. 1)</a>. En cautiverio hay 116 lobos en 23 instituciones mexicanas, dentro de un comité binacional de manejo genético <a class="fuente" href="#f15">(Arellano, 2026, sección "La fragilidad genética")</a>. En Estados Unidos había al menos 286 en 2024 <a class="fuente" href="#f15">(Arellano, 2026, sección "El argumento demográfico: menos remociones, más crecimiento")</a>.</p>
-          <figure class="hecho-foto">
-            <picture>
-              <source srcset="img/f5-lobo-aragon.webp" type="image/webp">
-              <img src="img/f5-lobo-aragon.jpg" width="1200" height="800" alt="Lobo mexicano de perfil sobre tierra, con el pelaje gris, café y crema, en un recinto de zoológico." loading="lazy">
-            </picture>
-            <figcaption class="fuente">Ejemplar en cautiverio en el zoológico de San Juan de Aragón, Ciudad de México. Esparquilin, 2021. CC BY-SA 4.0. Recortada. <a href="#foto-f5">Crédito completo</a>.</figcaption>
-          </figure>
-        </li>
-      </ol>
-    </div>
-  </div>
+ <div class="tiempo">
+ <div class="tiempo-anio" aria-hidden="true">
+ <span class="tiempo-anio-a">1971</span>
+ <span class="tiempo-anio-b"></span>
+ </div>
+ <ol class="tiempo-hechos">
+ <li class="hecho" data-anio="1971">
+ <h3 class="hecho-anio">1971</h3>
+ <p>El Servicio de Pesca y Vida Silvestre de Estados Unidos contrató a Roy McBride, trampero de las campañas de exterminio, para atrapar ejemplares vivos. Con el tiempo capturó cinco lobos en la región de Durango, que formaron el pie de cría, es decir, los animales de los que descienden los demás, conocido como "Linaje McBride".</p>
+ <figure class="hecho-foto">
+ <picture>
+ <source srcset="img/f6-lobos-durango.webp" type="image/webp">
+ <img src="img/f6-lobos-durango.jpg" width="1200" height="802" alt="Dos lobos mexicanos en un recinto con tierra y sombra, uno de pie y otro echado." loading="lazy">
+ </picture>
+ <figcaption class="fuente">Dos lobos mexicanos en cautiverio en el zoológico Sahuatoba, Durango. Vaquita marina, 2026. CC BY-SA 4.0. La foto no tiene relación con los cinco fundadores. <a href="#foto-f6">Crédito completo</a>.</figcaption>
+ </figure>
+ </li>
+ <li class="hecho" data-anio="1976">
+ <h3 class="hecho-anio">1976</h3>
+ <p>Ya extinto en Estados Unidos, el lobo fue incluido en la ley de especies en peligro de ese país, lo que obligó a crear un programa de recuperación.</p>
+ </li>
+ <li class="hecho" data-anio="Fundadores">
+ <h3 class="hecho-anio">Los fundadores</h3>
+ <p>Todos los ejemplares actuales descienden de "unos pocos que fueron capturados en los años 70, en el norte de México". Según el reportaje de Mongabay Latam, fueron siete individuos fundadores. El programa describe su acervo génico (el conjunto de genes de la población) como "sumamente pobre" y habla de un cuello de botella. Un cuello de botella genético es una pérdida drástica de diversidad genética por descender de muy pocos individuos; su consecuencia es la endogamia, la reproducción entre parientes cercanos.</p>
+ </li>
+ <li class="hecho" data-anio="1998">
+ <h3 class="hecho-anio">1998</h3>
+ <p>Las primeras liberaciones ocurrieron hacia 1998 en Arizona y Nuevo México. La reintroducción es la liberación, en un territorio donde la especie desapareció, de ejemplares criados en cautiverio para que vuelvan a vivir en libertad.</p>
+ </li>
+ <li class="hecho" data-anio="2009">
+ <h3 class="hecho-anio">2009</h3>
+ <p>Había más de 300 ejemplares en cautiverio en Estados Unidos y México. México todavía no había llevado a cabo la reintroducción.</p>
+ </li>
+ <li class="hecho" data-anio="2011">
+ <h3 class="hecho-anio">2011</h3>
+ <p>Comenzaron las liberaciones en México, en Chihuahua.</p>
+ </li>
+ <li class="hecho" data-anio="2014">
+ <h3 class="hecho-anio">2014</h3>
+ <p>Nació la primera camada en vida libre en el país, más de cuarenta años después del exterminio.</p>
+ </li>
+ <li class="hecho" data-anio="2021">
+ <h3 class="hecho-anio">2021</h3>
+ <p>En México se estimaban unos 35 individuos, con 15 liberaciones en diez años; en Estados Unidos había alrededor de 160 lobos.</p>
+ </li>
+ <li class="hecho" data-anio="2026">
+ <h3 class="hecho-anio">2026</h3>
+ <p>Mongabay Latam calcula entre 35 y 40 lobos en la sierra de Chihuahua. En cautiverio hay 116 lobos en 23 instituciones mexicanas, dentro de un comité binacional de manejo genético. En Estados Unidos había al menos 286 en 2024.</p>
+ <figure class="hecho-foto">
+ <picture>
+ <source srcset="img/f5-lobo-aragon.webp" type="image/webp">
+ <img src="img/f5-lobo-aragon.jpg" width="1200" height="800" alt="Lobo mexicano de perfil sobre tierra, con el pelaje gris, café y crema, en un recinto de zoológico." loading="lazy">
+ </picture>
+ <figcaption class="fuente">Ejemplar en cautiverio en el zoológico de San Juan de Aragón, Ciudad de México. Esparquilin, 2021. CC BY-SA 4.0. Recortada. <a href="#foto-f5">Crédito completo</a>.</figcaption>
+ </figure>
+ </li>
+ </ol>
+ </div>
+ </div>
 </section>
 
 <!-- 5. De la E a la P -->
 <section class="seccion fondo-2" id="estatus" aria-labelledby="t-estatus">
-  <div class="contenedor">
-    <p class="etiqueta">El estatus oficial</p>
-    <h2 id="t-estatus">De la E a la P</h2>
-    <p class="entrada">En México, el estatus de una especie se fija en la Norma Oficial Mexicana NOM-059-SEMARNAT-2010, publicada en el Diario Oficial de la Federación.</p>
-    <div class="dos">
-      <div class="cambio" aria-hidden="true">
-        <span class="cifra letra letra-e">E</span>
-        <span class="cifra letra letra-p">P</span>
-      </div>
-      <div class="prosa">
-        <p>La norma clasifica a las especies nativas en categorías de riesgo, es decir, niveles que indican qué tan cerca está una especie de desaparecer, y se actualiza con modificaciones publicadas en el mismo medio. Las dos filas siguientes se copiaron del Anexo Normativo III de cada publicación; los campos se separan con una barra vertical, como en la tabla original.</p>
-        <div class="dof">
-          <p class="dof-titulo">Norma Oficial Mexicana NOM-059-SEMARNAT-2010, publicada el 30 de diciembre de 2010 <a class="fuente" href="#f3">(SEMARNAT, 2010, Anexo Normativo III)</a></p>
-          <p class="dof-fila"><span>Carnivora</span><span>Canidae</span><span>Canis</span><span>lupus</span><span>baileyi</span><span>–</span><span>lobo mexicano, lobo gris</span><span>no endémica</span><span class="dof-cat">E</span><span>–</span></p>
-          <p class="dof-lectura">Categoría E, probablemente extinta en el medio silvestre.</p>
-        </div>
-        <div class="dof dof-vigente">
-          <p class="dof-titulo">Modificación del Anexo Normativo III, Lista de especies en riesgo de la NOM-059-SEMARNAT-2010, publicada el 14 de noviembre de 2019 <a class="fuente" href="#f4">(SEMARNAT, 2019, Anexo Normativo III)</a></p>
-          <p class="dof-fila"><span>Canidae</span><span>Canis</span><span>lupus</span><span>subsp.</span><span>baileyi</span><span>E.W. Nelson &amp; Goldman, 1929</span><span>Canis nubilus baileyi</span><span>lobo gris mexicano, lobo mexicano</span><span></span><span class="dof-cat">P</span></p>
-          <p class="dof-lectura">Categoría P, en peligro de extinción. Es la categoría vigente.</p>
-        </div>
-        <p>En 2010 se le consideraba probablemente desaparecida del medio silvestre. En 2019, con lobos ya en libertad, la norma la clasifica en peligro de extinción, categoría que corresponde a una especie presente en el medio silvestre.</p>
-      </div>
-    </div>
-  </div>
+ <div class="contenedor">
+ <p class="etiqueta">El estatus oficial</p>
+ <h2 id="t-estatus">De la E a la P</h2>
+ <p class="entrada">En México, el estatus de una especie se fija en la Norma Oficial Mexicana NOM-059-SEMARNAT-2010, publicada en el Diario Oficial de la Federación.</p>
+ <div class="dos">
+ <div class="cambio" aria-hidden="true">
+ <span class="cifra letra letra-e">E</span>
+ <span class="cifra letra letra-p">P</span>
+ </div>
+ <div class="prosa">
+ <p>La norma clasifica a las especies nativas en categorías de riesgo, es decir, niveles que indican qué tan cerca está una especie de desaparecer, y se actualiza con modificaciones publicadas en el mismo medio. Las dos filas siguientes se copiaron del Anexo Normativo III de cada publicación; los campos se separan con una barra vertical, como en la tabla original.</p>
+ <div class="dof">
+ <p class="dof-titulo">Norma Oficial Mexicana NOM-059-SEMARNAT-2010, publicada el 30 de diciembre de 2010</p>
+ <p class="dof-fila"><span>Carnivora</span><span>Canidae</span><span>Canis</span><span>lupus</span><span>baileyi</span><span>–</span><span>lobo mexicano, lobo gris</span><span>no endémica</span><span class="dof-cat">E</span><span>–</span></p>
+ <p class="dof-lectura">Categoría E, probablemente extinta en el medio silvestre.</p>
+ </div>
+ <div class="dof dof-vigente">
+ <p class="dof-titulo">Modificación del Anexo Normativo III, Lista de especies en riesgo de la NOM-059-SEMARNAT-2010, publicada el 14 de noviembre de 2019</p>
+ <p class="dof-fila"><span>Canidae</span><span>Canis</span><span>lupus</span><span>subsp.</span><span>baileyi</span><span>E.W. Nelson &amp; Goldman, 1929</span><span>Canis nubilus baileyi</span><span>lobo gris mexicano, lobo mexicano</span><span></span><span class="dof-cat">P</span></p>
+ <p class="dof-lectura">Categoría P, en peligro de extinción. Es la categoría vigente.</p>
+ </div>
+ <p>En 2010 se le consideraba probablemente desaparecida del medio silvestre. En 2019, con lobos ya en libertad, la norma la clasifica en peligro de extinción, categoría que corresponde a una especie presente en el medio silvestre.</p>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- 6. Tres razones -->
-<section class="seccion" id="razones" aria-labelledby="t-razones">
-  <div class="contenedor">
-    <p class="etiqueta">En peligro</p>
-    <h2 id="t-razones">Tres razones para seguir en peligro</h2>
-    <p class="entrada">Su regreso no resolvió su situación. Tres causas explican esa fragilidad; la asociación atiende dos.</p>
+<section class="seccion razones-escena" id="razones" aria-labelledby="t-razones">
+ <div class="contenedor">
+ <div class="razones-cabeza">
+ <p class="etiqueta">En peligro <span class="razones-paso" aria-hidden="true" hidden></span></p>
+ <h2 id="t-razones">Tres razones para seguir en peligro</h2>
+ <p class="entrada">Su regreso no resolvió su situación. Tres causas explican esa fragilidad; la asociación atiende dos.</p>
+ </div>
 
-    <ol class="razones">
-      <li class="razon">
-        <span class="razon-num cifra" aria-hidden="true">1</span>
-        <div class="prosa">
-          <h3>El conflicto con la ganadería</h3>
-          <p>"Los conflictos percibidos y reales con el sector ganadero persisten, y siguen siendo el principal factor de mortalidad para los lobos en el país" <a class="fuente" href="#f2">(Reyes-Díaz et al., 2022, sección "Introducción")</a>. Según el investigador Stewart Breck, la recuperación no ocurre en grandes áreas protegidas, sino en paisajes compartidos con personas, sobre todo ganaderos <a class="fuente" href="#f15">(Arellano, 2026, párrs. 4-5)</a>. El origen está en la dieta: el ganado bovino es una presa "mucho más grande, abundante y fácil de cazar en la región" que las presas silvestres pequeñas <a class="fuente" href="#f2">(Reyes-Díaz et al., 2022, sección "¿Qué come el lobo mexicano?")</a>.</p>
-          <p class="razon-quien"><strong>Quién la atiende.</strong> El programa oficial, que contempla talleres con ganaderos y mecanismos de atención rápida a la depredación, es decir, a los ataques al ganado <a class="fuente" href="#f1">(CONANP, 2009, p. 27)</a>, y el Seguro de Ataque por Depredadores, que compensa las pérdidas desde 2009 <a class="fuente" href="#f16">(PROFEPA, 2019)</a>. La asociación no trabaja con ganaderos ni compensa pérdidas; explica el conflicto como un problema real, con sus cifras y sus medidas.</p>
-        </div>
-      </li>
-      <li class="razon razon-der">
-        <span class="razon-num cifra" aria-hidden="true">2</span>
-        <div class="prosa">
-          <h3>El rechazo social y el desconocimiento</h3>
-          <p>Enrique Martínez Meyer, investigador de la Universidad Nacional Autónoma de México (UNAM), sostiene que el problema no es si hay suficiente bosque, sino si las personas están dispuestas a tolerar a los lobos <a class="fuente" href="#f14">(Olguín Lacunza, 2021, sección "¿Se puede recuperar?")</a>. En la Reserva de la Biosfera Sierra Gorda, Querétaro, el 62 % de los encuestados no considera importante la presencia del puma y el jaguar <a class="fuente" href="#f5">(Anaya-Zamora et al., 2017, p. 386)</a>. En Jalisco, solo el 3.6 % de los niños de una reserva dibujó al jaguar como parte de su entorno <a class="fuente" href="#f10">(Esparza-Carlos et al., 2019, resultados)</a>. La evidencia sobre percepción proviene del jaguar y el puma, no del lobo; por eso solo puede afirmarse que la educación podría cambiar la percepción del lobo.</p>
-          <p class="razon-quien"><strong>Quién la atiende.</strong> La asociación: campañas 1 y 3, actividades 1 a 4.</p>
-        </div>
-      </li>
-      <li class="razon">
-        <span class="razon-num cifra" aria-hidden="true">3</span>
-        <div class="prosa">
-          <h3>Una población pequeña y reciente</h3>
-          <p>Entre 35 y 40 lobos en la sierra de Chihuahua <a class="fuente" href="#f15">(Arellano, 2026, párr. 1)</a> forman una población pequeña y reciente. Incluso sin intervención humana, la mortalidad alcanza el 45 % en las crías de un año y el 10 % en los adultos <a class="fuente" href="#f1">(CONANP, 2009, p. 22)</a>. En Estados Unidos, reducir las remociones de lobos (su captura por atacar ganado) favoreció el crecimiento de la población <a class="fuente" href="#f15">(Arellano, 2026, sección "El argumento demográfico: menos remociones, más crecimiento")</a>. En 2025 se presentó en el Congreso de Estados Unidos el proyecto HR 4255, que propone retirar al lobo mexicano de la lista de especies protegidas <a class="fuente" href="#f15">(Arellano, 2026, sección "El frente legislativo: ¿desproteger al lobo?")</a>.</p>
-          <p class="razon-quien"><strong>Quién la atiende.</strong> La asociación: campañas 2 y 3, actividades 2, 5 y 6.</p>
-        </div>
-      </li>
-    </ol>
-  </div>
+ <ol class="razones">
+ <li class="razon">
+ <span class="razon-num cifra" aria-hidden="true">1</span>
+ <div class="prosa">
+ <h3>El conflicto con la ganadería</h3>
+ <p>"Los conflictos percibidos y reales con el sector ganadero persisten, y siguen siendo el principal factor de mortalidad para los lobos en el país". Según el investigador Stewart Breck, la recuperación no ocurre en grandes áreas protegidas, sino en paisajes compartidos con personas, sobre todo ganaderos. El origen está en la dieta: el ganado bovino es una presa "mucho más grande, abundante y fácil de cazar en la región" que las presas silvestres pequeñas.</p>
+ <details class="razon-quien">
+ <summary>Quién la atiende</summary>
+ <p>El programa oficial, que contempla talleres con ganaderos y mecanismos de atención rápida a la depredación, es decir, a los ataques al ganado, y el Seguro de Ataque por Depredadores, que compensa las pérdidas desde 2009. La asociación no trabaja con ganaderos ni compensa pérdidas; explica el conflicto como un problema real, con sus cifras y sus medidas.</p>
+ </details>
+ </div>
+ </li>
+ <li class="razon razon-der">
+ <span class="razon-num cifra" aria-hidden="true">2</span>
+ <div class="prosa">
+ <h3>El rechazo social y el desconocimiento</h3>
+ <p>Enrique Martínez Meyer, investigador de la Universidad Nacional Autónoma de México (UNAM), sostiene que el problema no es si hay suficiente bosque, sino si las personas están dispuestas a tolerar a los lobos. En la Reserva de la Biosfera Sierra Gorda, Querétaro, el 62 % de los encuestados no considera importante la presencia del puma y el jaguar. En Jalisco, solo el 3.6 % de los niños de una reserva dibujó al jaguar como parte de su entorno. La evidencia sobre percepción proviene del jaguar y el puma, no del lobo; por eso solo puede afirmarse que la educación podría cambiar la percepción del lobo.</p>
+ <details class="razon-quien">
+ <summary>Quién la atiende</summary>
+ <p>La asociación: campañas 1 y 3, actividades 1 a 4.</p>
+ </details>
+ </div>
+ </li>
+ <li class="razon">
+ <span class="razon-num cifra" aria-hidden="true">3</span>
+ <div class="prosa">
+ <h3>Una población pequeña y reciente</h3>
+ <p>Entre 35 y 40 lobos en la sierra de Chihuahua forman una población pequeña y reciente. Incluso sin intervención humana, la mortalidad alcanza el 45 % en las crías de un año y el 10 % en los adultos. En Estados Unidos, reducir las remociones de lobos (su captura por atacar ganado) favoreció el crecimiento de la población. En 2025 se presentó en el Congreso de Estados Unidos el proyecto HR 4255, que propone retirar al lobo mexicano de la lista de especies protegidas.</p>
+ <details class="razon-quien">
+ <summary>Quién la atiende</summary>
+ <p>La asociación: campañas 2 y 3, actividades 2, 5 y 6.</p>
+ </details>
+ </div>
+ </li>
+ </ol>
+ </div>
 </section>
 
 <!-- 7. Mito y dato -->
 <section class="seccion fondo-2" id="mito-dato" aria-labelledby="t-mito">
-  <div class="contenedor">
-    <p class="etiqueta">Campaña 1</p>
-    <h2 id="t-mito">Mito y dato</h2>
-    <p class="entrada">Seis cosas que se dicen del lobo mexicano, cada una con el dato que la corrige y su fuente.</p>
-  </div>
-  <div class="carrusel" aria-roledescription="carrusel" aria-label="Piezas de la campaña Mito y dato">
-    <ul class="pista contenedor">
-      <li class="pieza" aria-label="Pieza 1 de 6">
-        <span class="pieza-num cifra" aria-hidden="true">1</span>
-        <p class="mito"><span class="pieza-rotulo">Mito</span> El lobo mexicano es enorme.</p>
-        <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-1" hidden>Ver el dato</button>
-        <div class="dato" id="dato-1">
-          <p><span class="pieza-rotulo">Dato</span> Es la subespecie más pequeña de lobo gris y pesa entre 21 y 41 kilogramos.</p>
-          <p class="fuente"><span class="pieza-rotulo">Fuente</span> <a href="#f1">CONANP (2009, p. 14)</a>.</p>
-        </div>
-      </li>
-      <li class="pieza" aria-label="Pieza 2 de 6">
-        <span class="pieza-num cifra" aria-hidden="true">2</span>
-        <p class="mito"><span class="pieza-rotulo">Mito</span> Solo come ganado.</p>
-        <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-2" hidden>Ver el dato</button>
-        <div class="dato" id="dato-2">
-          <p><span class="pieza-rotulo">Dato</span> En México se le han registrado 25 presas silvestres y tres domésticas; su presa principal es el venado cola blanca.</p>
-          <p class="fuente"><span class="pieza-rotulo">Fuente</span> <a href="#f2">Reyes-Díaz et al. (2022, secciones "Resumen" y "¿Qué come el lobo mexicano?")</a>.</p>
-        </div>
-      </li>
-      <li class="pieza" aria-label="Pieza 3 de 6">
-        <span class="pieza-num cifra" aria-hidden="true">3</span>
-        <p class="mito"><span class="pieza-rotulo">Mito</span> Ya no existe.</p>
-        <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-3" hidden>Ver el dato</button>
-        <div class="dato" id="dato-3">
-          <p><span class="pieza-rotulo">Dato</span> Se libera en México desde 2011 y en 2026 viven entre 35 y 40 lobos en la sierra de Chihuahua.</p>
-          <p class="fuente"><span class="pieza-rotulo">Fuente</span> <a href="#f14">Olguín Lacunza (2021, sección "La problemática actual")</a>; <a href="#f15">Arellano (2026, párr. 1)</a>.</p>
-        </div>
-      </li>
-      <li class="pieza" aria-label="Pieza 4 de 6">
-        <span class="pieza-num cifra" aria-hidden="true">4</span>
-        <p class="mito"><span class="pieza-rotulo">Mito</span> El lobo es un animal solitario.</p>
-        <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-4" hidden>Ver el dato</button>
-        <div class="dato" id="dato-4">
-          <p><span class="pieza-rotulo">Dato</span> Forma manadas organizadas alrededor de una pareja reproductiva, los individuos llamados "alfa".</p>
-          <p class="fuente"><span class="pieza-rotulo">Fuente</span> <a href="#f1">CONANP (2009, p. 15)</a>.</p>
-        </div>
-      </li>
-      <li class="pieza" aria-label="Pieza 5 de 6">
-        <span class="pieza-num cifra" aria-hidden="true">5</span>
-        <p class="mito"><span class="pieza-rotulo">Mito</span> El lobo mexicano es un animal de Estados Unidos.</p>
-        <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-5" hidden>Ver el dato</button>
-        <div class="dato" id="dato-5">
-          <p><span class="pieza-rotulo">Dato</span> El 90 por ciento de su distribución histórica estuvo en México, desde Chihuahua hasta Oaxaca.</p>
-          <p class="fuente"><span class="pieza-rotulo">Fuente</span> <a href="#f14">Olguín Lacunza (2021, sección "La problemática actual")</a>; <a href="#f1">CONANP (2009, p. 16)</a>.</p>
-        </div>
-      </li>
-      <li class="pieza" aria-label="Pieza 6 de 6">
-        <span class="pieza-num cifra" aria-hidden="true">6</span>
-        <p class="mito"><span class="pieza-rotulo">Mito</span> Desapareció por sí solo.</p>
-        <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-6" hidden>Ver el dato</button>
-        <div class="dato" id="dato-6">
-          <p><span class="pieza-rotulo">Dato</span> Fue exterminado de la vida libre alrededor de 1970 por campañas de erradicación de los gobiernos de Estados Unidos y México.</p>
-          <p class="fuente"><span class="pieza-rotulo">Fuente</span> <a href="#f1">CONANP (2009, p. 11)</a>.</p>
-        </div>
-      </li>
-    </ul>
-    <div class="contenedor carrusel-controles" hidden>
-      <button class="carrusel-btn carrusel-ant" type="button" aria-label="Pieza anterior">&#8592;</button>
-      <p class="carrusel-indicador" aria-live="polite">Pieza 1 de 6</p>
-      <button class="carrusel-btn carrusel-sig" type="button" aria-label="Pieza siguiente">&#8594;</button>
-    </div>
-  </div>
-  <div class="contenedor">
-    <p class="fuente nota-carrusel">Estas seis piezas son la campaña "Mito y dato" de la asociación (Anexo C del trabajo escrito). El enunciado de cada mito es propuesta de la asociación; el dato y la fuente son del trabajo.</p>
-  </div>
+ <div class="contenedor">
+ <p class="etiqueta">Campaña 1</p>
+ <h2 id="t-mito">Mito y dato</h2>
+ <p class="entrada">Seis cosas que se dicen del lobo mexicano, cada una con el dato que la corrige y su fuente.</p>
+ </div>
+ <div class="carrusel" aria-roledescription="carrusel" aria-label="Piezas de la campaña Mito y dato">
+ <ul class="pista contenedor">
+ <li class="pieza" aria-label="Pieza 1 de 6">
+ <span class="pieza-num cifra" aria-hidden="true">1</span>
+ <p class="mito"><span class="pieza-rotulo">Mito</span> El lobo mexicano es enorme.</p>
+ <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-1" hidden>Ver el dato</button>
+ <div class="dato" id="dato-1">
+ <p><span class="pieza-rotulo">Dato</span> Es la subespecie más pequeña de lobo gris y pesa entre 21 y 41 kilogramos.</p>
+ </div>
+ </li>
+ <li class="pieza" aria-label="Pieza 2 de 6">
+ <span class="pieza-num cifra" aria-hidden="true">2</span>
+ <p class="mito"><span class="pieza-rotulo">Mito</span> Solo come ganado.</p>
+ <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-2" hidden>Ver el dato</button>
+ <div class="dato" id="dato-2">
+ <p><span class="pieza-rotulo">Dato</span> En México se le han registrado 25 presas silvestres y tres domésticas; su presa principal es el venado cola blanca.</p>
+ </div>
+ </li>
+ <li class="pieza" aria-label="Pieza 3 de 6">
+ <span class="pieza-num cifra" aria-hidden="true">3</span>
+ <p class="mito"><span class="pieza-rotulo">Mito</span> Ya no existe.</p>
+ <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-3" hidden>Ver el dato</button>
+ <div class="dato" id="dato-3">
+ <p><span class="pieza-rotulo">Dato</span> Se libera en México desde 2011 y en 2026 viven entre 35 y 40 lobos en la sierra de Chihuahua.</p>
+ </div>
+ </li>
+ <li class="pieza" aria-label="Pieza 4 de 6">
+ <span class="pieza-num cifra" aria-hidden="true">4</span>
+ <p class="mito"><span class="pieza-rotulo">Mito</span> El lobo es un animal solitario.</p>
+ <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-4" hidden>Ver el dato</button>
+ <div class="dato" id="dato-4">
+ <p><span class="pieza-rotulo">Dato</span> Forma manadas organizadas alrededor de una pareja reproductiva, los individuos llamados "alfa".</p>
+ </div>
+ </li>
+ <li class="pieza" aria-label="Pieza 5 de 6">
+ <span class="pieza-num cifra" aria-hidden="true">5</span>
+ <p class="mito"><span class="pieza-rotulo">Mito</span> El lobo mexicano es un animal de Estados Unidos.</p>
+ <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-5" hidden>Ver el dato</button>
+ <div class="dato" id="dato-5">
+ <p><span class="pieza-rotulo">Dato</span> El 90 por ciento de su distribución histórica estuvo en México, desde Chihuahua hasta Oaxaca.</p>
+ </div>
+ </li>
+ <li class="pieza" aria-label="Pieza 6 de 6">
+ <span class="pieza-num cifra" aria-hidden="true">6</span>
+ <p class="mito"><span class="pieza-rotulo">Mito</span> Desapareció por sí solo.</p>
+ <button class="ver-dato" type="button" aria-expanded="true" aria-controls="dato-6" hidden>Ver el dato</button>
+ <div class="dato" id="dato-6">
+ <p><span class="pieza-rotulo">Dato</span> Fue exterminado de la vida libre alrededor de 1970 por campañas de erradicación de los gobiernos de Estados Unidos y México.</p>
+ </div>
+ </li>
+ </ul>
+ <div class="contenedor carrusel-controles" hidden>
+ <button class="carrusel-btn carrusel-ant" type="button" aria-label="Pieza anterior">&#8592;</button>
+ <p class="carrusel-indicador" aria-live="polite">Pieza 1 de 6</p>
+ <button class="carrusel-btn carrusel-sig" type="button" aria-label="Pieza siguiente">&#8594;</button>
+ </div>
+ </div>
+ <div class="contenedor">
+ <p class="fuente nota-carrusel">Estas seis piezas son la campaña "Mito y dato" de la asociación (Anexo C del trabajo escrito). El enunciado de cada mito es propuesta de la asociación; los datos son del trabajo escrito y sus fuentes están al final de la página.</p>
+ </div>
 </section>
 
 <!-- 8. La asociación -->
 <section class="seccion" id="asociacion" aria-labelledby="t-asociacion">
-  <div class="contenedor">
-    <p class="etiqueta">La asociación</p>
-    <h2 id="t-asociacion">Cuidando a México, A.C.</h2>
-    <p class="entrada">Una asociación civil de estudiantes dedicada a la educación ambiental y a la difusión sobre el lobo gris mexicano. No libera lobos, no trabaja con ganaderos, no compensa pérdidas ni cambia leyes: informa, enseña y difunde.</p>
+ <div class="contenedor">
+ <p class="etiqueta">La asociación</p>
+ <h2 id="t-asociacion">Cuidando a México, A.C.</h2>
+ <p class="entrada">Una asociación civil de estudiantes dedicada a la educación ambiental y a la difusión sobre el lobo gris mexicano. No libera lobos, no trabaja con ganaderos, no compensa pérdidas ni cambia leyes: informa, enseña y difunde.</p>
 
-    <div class="identidad">
-      <div class="identidad-bloque">
-        <h3>Misión</h3>
-        <p class="identidad-texto">Somos Cuidando a México, A.C., una asociación de estudiantes que da a conocer al lobo gris mexicano: llevamos a escuelas y redes información con fuentes sobre su historia, su situación y el programa que lo está recuperando.</p>
-      </div>
-      <div class="identidad-bloque">
-        <h3>Visión</h3>
-        <p class="identidad-texto">En 2036, el lobo gris mexicano es una especie conocida en las escuelas de México: los estudiantes saben que volvió, que está en peligro y que existe un programa para recuperarlo.</p>
-      </div>
-      <div class="identidad-bloque identidad-eslogan">
-        <h3>Eslogan</h3>
-        <p class="identidad-texto eslogan-chico">Volvió. Conócelo.</p>
-      </div>
-    </div>
+ <div class="identidad">
+ <div class="identidad-bloque">
+ <h3>Misión</h3>
+ <p class="identidad-texto">Somos Cuidando a México, A.C., una asociación de estudiantes que da a conocer al lobo gris mexicano: llevamos a escuelas y redes información con fuentes sobre su historia, su situación y el programa que lo está recuperando.</p>
+ </div>
+ <div class="identidad-bloque">
+ <h3>Visión</h3>
+ <p class="identidad-texto">En 2036, el lobo gris mexicano es una especie conocida en las escuelas de México: los estudiantes saben que volvió, que está en peligro y que existe un programa para recuperarlo.</p>
+ </div>
+ <div class="identidad-bloque identidad-eslogan">
+ <p class="identidad-texto eslogan-chico">Volvió. Conócelo.</p>
+ </div>
+ </div>
 
-    <h3 class="sub">Valores</h3>
-    <dl class="valores">
-      <div><dt>Información con fuentes</dt><dd>Todo dato que difundimos lleva su fuente y dónde encontrarlo (página o sección). No usamos cifras que no podamos respaldar, ni mitos "a favor" del lobo.</dd></div>
-      <div><dt>Claridad</dt><dd>Explicamos cada término la primera vez (subespecie, endogamia, reintroducción). Si un estudiante de secundaria no lo entiende, lo reescribimos.</dd></div>
-      <div><dt>Colaboración, no sustitución</dt><dd>No hacemos el trabajo del programa oficial de conservación: lo difundimos, le pedimos información y canalizamos a él las preguntas que no nos corresponden.</dd></div>
-      <div><dt>Constancia</dt><dd>Una plática sola no cambia lo que alguien cree. Cada escuela que recibe la plática recibe también la guía, y la exposición visita a las escuelas que la soliciten dentro del mismo ciclo escolar.</dd></div>
-      <div><dt>Respeto por quienes viven con el lobo</dt><dd>Ninguna pieza ridiculiza ni culpa al ganadero que pierde animales. El conflicto con la ganadería se explica como un problema real, con sus cifras y sus medidas, porque sin ese respeto ningún dato sobre el lobo será escuchado.</dd></div>
-    </dl>
+ <h3 class="sub">Valores</h3>
+ <dl class="valores">
+ <div><dt>Información con fuentes</dt><dd>Todo dato que difundimos lleva su fuente y dónde encontrarlo (página o sección). No usamos cifras que no podamos respaldar, ni mitos "a favor" del lobo.</dd></div>
+ <div><dt>Claridad</dt><dd>Explicamos cada término la primera vez (subespecie, endogamia, reintroducción). Si un estudiante de secundaria no lo entiende, lo reescribimos.</dd></div>
+ <div><dt>Colaboración, no sustitución</dt><dd>No hacemos el trabajo del programa oficial de conservación: lo difundimos, le pedimos información y canalizamos a él las preguntas que no nos corresponden.</dd></div>
+ <div><dt>Constancia</dt><dd>Una plática sola no cambia lo que alguien cree. Cada escuela que recibe la plática recibe también la guía, y la exposición visita a las escuelas que la soliciten dentro del mismo ciclo escolar.</dd></div>
+ <div><dt>Respeto por quienes viven con el lobo</dt><dd>Ninguna pieza ridiculiza ni culpa al ganadero que pierde animales. El conflicto con la ganadería se explica como un problema real, con sus cifras y sus medidas, porque sin ese respeto ningún dato sobre el lobo será escuchado.</dd></div>
+ </dl>
 
-    <h3 class="sub">Organigrama</h3>
-    <p class="prosa">Cuidando a México se organiza en una dirección general y tres coordinaciones, una por integrante. Cada puesto aparece en al menos una campaña o actividad.</p>
-    <div class="organigrama" role="group" aria-label="Organigrama: una dirección general y tres coordinaciones">
-      <div class="org-nivel org-nivel-1">
-        <div class="org-puesto">
-          <h4>Dirección general</h4>
-          <p>Representa a la asociación, gestiona la vinculación con el programa oficial de conservación y con los centros de conservación, y administra los recursos.</p>
-          <p class="fuente">Actividades 5 y 6</p>
-        </div>
-      </div>
-      <div class="org-linea" aria-hidden="true"></div>
-      <div class="org-nivel org-nivel-2">
-        <div class="org-puesto">
-          <h4>Coordinación de educación</h4>
-          <p>Diseña e imparte las pláticas en escuelas y elabora la guía didáctica para docentes.</p>
-          <p class="fuente">Actividades 1 y 4</p>
-        </div>
-        <div class="org-puesto">
-          <h4>Coordinación de contenidos e investigación</h4>
-          <p>Verifica cada dato con su fuente y arma los textos de la exposición, de la serie "mito y dato" y del informe anual.</p>
-          <p class="fuente">Actividades 2, 3 y 6; verifica las tres campañas</p>
-        </div>
-        <div class="org-puesto">
-          <h4>Coordinación de comunicación y campañas</h4>
-          <p>Produce las campañas (carteles, redes, diseño de la exposición) y mide su alcance.</p>
-          <p class="fuente">Campañas 1, 2 y 3; actividades 2 y 3</p>
-        </div>
-      </div>
-    </div>
+ <h3 class="sub">Organigrama</h3>
+ <p class="prosa">Cuidando a México se organiza en una dirección general y tres coordinaciones, una por integrante. Cada puesto aparece en al menos una campaña o actividad.</p>
+ <div class="organigrama" role="group" aria-label="Organigrama: una dirección general y tres coordinaciones">
+ <div class="org-nivel org-nivel-1">
+ <div class="org-puesto">
+ <h4>Dirección general</h4>
+ <p>Representa a la asociación, gestiona la vinculación con el programa oficial de conservación y con los centros de conservación, y administra los recursos.</p>
+ <p class="fuente">Actividades 5 y 6</p>
+ </div>
+ </div>
+ <div class="org-linea" aria-hidden="true"></div>
+ <div class="org-nivel org-nivel-2">
+ <div class="org-puesto">
+ <h4>Coordinación de educación</h4>
+ <p>Diseña e imparte las pláticas en escuelas y elabora la guía didáctica para docentes.</p>
+ <p class="fuente">Actividades 1 y 4</p>
+ </div>
+ <div class="org-puesto">
+ <h4>Coordinación de contenidos e investigación</h4>
+ <p>Verifica cada dato con su fuente y arma los textos de la exposición, de la serie "mito y dato" y del informe anual.</p>
+ <p class="fuente">Actividades 2, 3 y 6; verifica las tres campañas</p>
+ </div>
+ <div class="org-puesto">
+ <h4>Coordinación de comunicación y campañas</h4>
+ <p>Produce las campañas (carteles, redes, diseño de la exposición) y mide su alcance.</p>
+ <p class="fuente">Campañas 1, 2 y 3; actividades 2 y 3</p>
+ </div>
+ </div>
+ </div>
 
-    <h3 class="sub">Tres campañas de publicidad</h3>
-    <ol class="lista-programa">
-      <li>
-        <h4><span class="etiqueta-num">Campaña 1</span> "Mito y dato"</h4>
-        <p><strong>Causa que ataca.</strong> El rechazo social y el desconocimiento.</p>
-        <p><strong>Objetivo.</strong> Sustituir los mitos sobre el lobo mexicano por datos verificados.</p>
-        <p><strong>Pieza.</strong> Seis imágenes con la fórmula "Mito / Dato / Fuente" y un cartel que reúne las seis (<a href="#mito-dato">las seis piezas</a>).</p>
-        <p><strong>Por qué funcionaría.</strong> El programa oficial propone promover a nivel nacional la importancia del lobo en los ecosistemas y crear un sitio con información confiable y actualizada sobre la especie <a class="fuente" href="#f1">(CONANP, 2009, p. 31)</a>. Los autores del estudio de Jalisco recomiendan material educativo que explique el papel ecológico de los depredadores tope <a class="fuente" href="#f10">(Esparza-Carlos et al., 2019, discusión)</a>.</p>
-      </li>
-      <li>
-        <h4><span class="etiqueta-num">Campaña 2</span> "Está en peligro y tiene programa"</h4>
-        <p><strong>Causa que ataca.</strong> La población pequeña y reciente, vulnerable a la mortalidad por causas humanas.</p>
-        <p><strong>Objetivo.</strong> Que el público sepa que el lobo mexicano está clasificado en peligro de extinción, que existe un programa oficial que lo recupera y que ese programa necesita respaldo social.</p>
-        <p><strong>Pieza.</strong> Infografía con la línea de tiempo (<a href="#durango">la de esta página</a>) y las dos filas del Diario Oficial de la Federación <a class="fuente" href="#f3">(SEMARNAT, 2010</a>; <a class="fuente" href="#f4">SEMARNAT, 2019)</a>; versión para redes y para cartel.</p>
-        <p><strong>Por qué funcionaría.</strong> El componente de comunicación y difusión del programa oficial tiene por objetivo dar a conocer a la sociedad la problemática y los programas en torno al lobo <a class="fuente" href="#f1">(CONANP, 2009, p. 31)</a>.</p>
-      </li>
-      <li>
-        <h4><span class="etiqueta-num">Campaña 3</span> "Semana del lobo mexicano"</h4>
-        <p><strong>Causas que ataca.</strong> El rechazo social y el desconocimiento, y la población pequeña y reciente.</p>
-        <p><strong>Objetivo.</strong> Concentrar en una semana al año la atención de una escuela sobre la especie, con exposición, plática de un especialista y concurso de carteles.</p>
-        <p><strong>Mensaje central.</strong> "Una semana para conocer al lobo que México casi pierde."</p>
-        <p><strong>Por qué funcionaría.</strong> El programa oficial prevé conferencias dirigidas a organizaciones, instituciones y sociedad civil y un emblema de conservación que se identifique con los niños <a class="fuente" href="#f1">(CONANP, 2009, p. 31)</a>. Esparza-Carlos et al. <a class="fuente" href="#f10">(2019, discusión)</a> proponen promover al depredador como emblema regional mediante un concurso que convoque a niños y jóvenes.</p>
-      </li>
-    </ol>
+ <h3 class="sub">Tres campañas de publicidad</h3>
+ <ol class="lista-programa">
+ <li>
+ <h4><span class="etiqueta-num">Campaña 1</span> "Mito y dato"</h4>
+ <p><strong>Causa que ataca.</strong> El rechazo social y el desconocimiento.</p>
+ <p><strong>Objetivo.</strong> Sustituir los mitos sobre el lobo mexicano por datos verificados.</p>
+ <p><strong>Pieza.</strong> Seis imágenes con la fórmula "Mito / Dato / Fuente" y un cartel que reúne las seis (<a href="#mito-dato">las seis piezas</a>).</p>
+ <p><strong>Por qué funcionaría.</strong> El programa oficial propone promover a nivel nacional la importancia del lobo en los ecosistemas y crear un sitio con información confiable y actualizada sobre la especie. Los autores del estudio de Jalisco recomiendan material educativo que explique el papel ecológico de los depredadores tope.</p>
+ </li>
+ <li>
+ <h4><span class="etiqueta-num">Campaña 2</span> "Está en peligro y tiene programa"</h4>
+ <p><strong>Causa que ataca.</strong> La población pequeña y reciente, vulnerable a la mortalidad por causas humanas.</p>
+ <p><strong>Objetivo.</strong> Que el público sepa que el lobo mexicano está clasificado en peligro de extinción, que existe un programa oficial que lo recupera y que ese programa necesita respaldo social.</p>
+ <p><strong>Pieza.</strong> Infografía con la línea de tiempo (<a href="#durango">la de esta página</a>) y las dos filas del Diario Oficial de la Federación;; versión para redes y para cartel.</p>
+ <p><strong>Por qué funcionaría.</strong> El componente de comunicación y difusión del programa oficial tiene por objetivo dar a conocer a la sociedad la problemática y los programas en torno al lobo.</p>
+ </li>
+ <li>
+ <h4><span class="etiqueta-num">Campaña 3</span> "Semana del lobo mexicano"</h4>
+ <p><strong>Causas que ataca.</strong> El rechazo social y el desconocimiento, y la población pequeña y reciente.</p>
+ <p><strong>Objetivo.</strong> Concentrar en una semana al año la atención de una escuela sobre la especie, con exposición, plática de un especialista y concurso de carteles.</p>
+ <p><strong>Mensaje central.</strong> "Una semana para conocer al lobo que México casi pierde."</p>
+ <p><strong>Por qué funcionaría.</strong> El programa oficial prevé conferencias dirigidas a organizaciones, instituciones y sociedad civil y un emblema de conservación que se identifique con los niños. Esparza-Carlos et al. proponen promover al depredador como emblema regional mediante un concurso que convoque a niños y jóvenes.</p>
+ </li>
+ </ol>
 
-    <h3 class="sub">Seis actividades para un ciclo escolar</h3>
-    <ol class="lista-programa lista-actividades">
-      <li>
-        <h4><span class="etiqueta-num">Actividad 1</span> Pláticas "Conoce al lobo mexicano" en escuelas</h4>
-        <p>Plática de 50 minutos en secundarias y bachilleratos, en tres partes: quién es el lobo mexicano, qué le pasó y qué pasa hoy. Antes y después se aplica un cuestionario de cinco preguntas. <span class="fuente">Causa: rechazo social y desconocimiento · Coordinación de educación · Dos escuelas por mes a partir del segundo trimestre.</span></p>
-      </li>
-      <li>
-        <h4><span class="etiqueta-num">Actividad 2</span> Exposición itinerante "El regreso del lobo"</h4>
-        <p>Ocho paneles que se montan dos semanas en cada escuela o biblioteca: biología, distribución, exterminio, cautiverio y fundadores, liberaciones, estatus oficial con las dos filas del DOF, programa oficial y qué puede hacer cada quien. <span class="fuente">Causas: rechazo social y desconocimiento; población pequeña y reciente · Coordinación de contenidos e investigación (textos) y Coordinación de comunicación y campañas (diseño) · Se produce en el primer trimestre y rota el resto del año.</span></p>
-      </li>
-      <li>
-        <h4><span class="etiqueta-num">Actividad 3</span> Serie "mito y dato" en redes</h4>
-        <p>Seis publicaciones con fuente, una cada dos semanas, con la fórmula de la campaña 1; se responden con fuente las preguntas del público. <span class="fuente">Causa: rechazo social y desconocimiento · Coordinación de contenidos e investigación y Coordinación de comunicación y campañas · Primer trimestre; se repite con datos nuevos cada semestre.</span></p>
-      </li>
-      <li>
-        <h4><span class="etiqueta-num">Actividad 4</span> Guía didáctica para docentes</h4>
-        <p>Cuadernillo de 12 páginas con tres actividades para clase (línea de tiempo del lobo, mapa de distribución histórica y actual, debate "mito y dato") y la lista de fuentes. <span class="fuente">Causa: rechazo social y desconocimiento · Coordinación de educación · Segundo trimestre, lista antes de la primera plática; se entrega en cada plática de la actividad 1.</span></p>
-      </li>
-      <li>
-        <h4><span class="etiqueta-num">Actividad 5</span> Vinculación con el programa oficial y con centros de conservación</h4>
-        <p>Solicitar información y materiales oficiales; invitar a una persona del programa o de un centro de conservación a la plática de la campaña 3; canalizar al programa las preguntas que no corresponden a la asociación. <span class="fuente">Causa: población pequeña y reciente · Dirección general · Una reunión o comunicación por semestre.</span></p>
-      </li>
-      <li>
-        <h4><span class="etiqueta-num">Actividad 6</span> Informe anual público "¿Cómo va el lobo mexicano?"</h4>
-        <p>Documento de cuatro páginas con lo que el programa oficial y la prensa especializada reportaron en el año (población, liberaciones, cambios legales), con fuentes; se publica en redes y se entrega a las escuelas. <span class="fuente">Causa: población pequeña y reciente · Dirección general y Coordinación de contenidos e investigación · Una vez al año.</span></p>
-      </li>
-    </ol>
+ <h3 class="sub">Seis actividades para un ciclo escolar</h3>
+ <ol class="lista-programa lista-actividades">
+ <li>
+ <h4><span class="etiqueta-num">Actividad 1</span> Pláticas "Conoce al lobo mexicano" en escuelas</h4>
+ <p>Plática de 50 minutos en secundarias y bachilleratos, en tres partes: quién es el lobo mexicano, qué le pasó y qué pasa hoy. Antes y después se aplica un cuestionario de cinco preguntas. <span class="fuente">Causa: rechazo social y desconocimiento · Coordinación de educación · Dos escuelas por mes a partir del segundo trimestre.</span></p>
+ </li>
+ <li>
+ <h4><span class="etiqueta-num">Actividad 2</span> Exposición itinerante "El regreso del lobo"</h4>
+ <p>Ocho paneles que se montan dos semanas en cada escuela o biblioteca: biología, distribución, exterminio, cautiverio y fundadores, liberaciones, estatus oficial con las dos filas del DOF, programa oficial y qué puede hacer cada quien. <span class="fuente">Causas: rechazo social y desconocimiento; población pequeña y reciente · Coordinación de contenidos e investigación (textos) y Coordinación de comunicación y campañas (diseño) · Se produce en el primer trimestre y rota el resto del año.</span></p>
+ </li>
+ <li>
+ <h4><span class="etiqueta-num">Actividad 3</span> Serie "mito y dato" en redes</h4>
+ <p>Seis publicaciones con fuente, una cada dos semanas, con la fórmula de la campaña 1; se responden con fuente las preguntas del público. <span class="fuente">Causa: rechazo social y desconocimiento · Coordinación de contenidos e investigación y Coordinación de comunicación y campañas · Primer trimestre; se repite con datos nuevos cada semestre.</span></p>
+ </li>
+ <li>
+ <h4><span class="etiqueta-num">Actividad 4</span> Guía didáctica para docentes</h4>
+ <p>Cuadernillo de 12 páginas con tres actividades para clase (línea de tiempo del lobo, mapa de distribución histórica y actual, debate "mito y dato") y la lista de fuentes. <span class="fuente">Causa: rechazo social y desconocimiento · Coordinación de educación · Segundo trimestre, lista antes de la primera plática; se entrega en cada plática de la actividad 1.</span></p>
+ </li>
+ <li>
+ <h4><span class="etiqueta-num">Actividad 5</span> Vinculación con el programa oficial y con centros de conservación</h4>
+ <p>Solicitar información y materiales oficiales; invitar a una persona del programa o de un centro de conservación a la plática de la campaña 3; canalizar al programa las preguntas que no corresponden a la asociación. <span class="fuente">Causa: población pequeña y reciente · Dirección general · Una reunión o comunicación por semestre.</span></p>
+ </li>
+ <li>
+ <h4><span class="etiqueta-num">Actividad 6</span> Informe anual público "¿Cómo va el lobo mexicano?"</h4>
+ <p>Documento de cuatro páginas con lo que el programa oficial y la prensa especializada reportaron en el año (población, liberaciones, cambios legales), con fuentes; se publica en redes y se entrega a las escuelas. <span class="fuente">Causa: población pequeña y reciente · Dirección general y Coordinación de contenidos e investigación · Una vez al año.</span></p>
+ </li>
+ </ol>
 
-    <h3 class="sub">El año, trimestre por trimestre</h3>
-    <ol class="cronograma">
-      <li><h4>Meses 1 a 3</h4><p>Actividad 5: primera comunicación con el programa oficial. Actividad 2: producción de la exposición. Actividad 3: arranca la serie en redes. Campañas 1 y 2 en redes.</p></li>
-      <li><h4>Meses 4 a 6</h4><p>Actividad 4: guía didáctica, lista antes de la primera plática. Actividad 1: pláticas en escuelas, dos por mes. Actividad 2: primera sede.</p></li>
-      <li><h4>Meses 7 a 9</h4><p>Actividad 1 continúa. Actividad 2: segunda y tercera sede. Actividad 3: segunda serie con datos nuevos. Campaña 3: Semana del lobo mexicano en la escuela anfitriona.</p></li>
-      <li><h4>Meses 10 a 12</h4><p>Actividad 1 continúa. Actividad 5: segunda comunicación. Actividad 6: informe anual. Evaluación de los indicadores de las tres campañas y las seis actividades.</p></li>
-    </ol>
+ <h3 class="sub">El año, trimestre por trimestre</h3>
+ <ol class="cronograma">
+ <li><h4>Meses 1 a 3</h4><p>Actividad 5: primera comunicación con el programa oficial. Actividad 2: producción de la exposición. Actividad 3: arranca la serie en redes. Campañas 1 y 2 en redes.</p></li>
+ <li><h4>Meses 4 a 6</h4><p>Actividad 4: guía didáctica, lista antes de la primera plática. Actividad 1: pláticas en escuelas, dos por mes. Actividad 2: primera sede.</p></li>
+ <li><h4>Meses 7 a 9</h4><p>Actividad 1 continúa. Actividad 2: segunda y tercera sede. Actividad 3: segunda serie con datos nuevos. Campaña 3: Semana del lobo mexicano en la escuela anfitriona.</p></li>
+ <li><h4>Meses 10 a 12</h4><p>Actividad 1 continúa. Actividad 5: segunda comunicación. Actividad 6: informe anual. Evaluación de los indicadores de las tres campañas y las seis actividades.</p></li>
+ </ol>
 
-    <h3 class="sub">Cobertura de causas</h3>
-    <table class="cobertura">
-      <thead><tr><th scope="col">Causa</th><th scope="col">Campañas</th><th scope="col">Actividades</th></tr></thead>
-      <tbody>
-        <tr><th scope="row">Rechazo social y desconocimiento</th><td>1, 3</td><td>1, 2, 3, 4</td></tr>
-        <tr><th scope="row">Población pequeña y reciente, vulnerable a la mortalidad por causas humanas</th><td>2, 3</td><td>2, 5, 6</td></tr>
-      </tbody>
-    </table>
-    <p class="prosa">Cada campaña y cada actividad ataca al menos una de las dos causas, y cada puesto del organigrama aparece en al menos una. El conflicto con la ganadería se explica como contexto; corresponde al programa oficial y al seguro por ataque de depredadores.</p>
-  </div>
+ <h3 class="sub">Cobertura de causas</h3>
+ <table class="cobertura">
+ <thead><tr><th scope="col">Causa</th><th scope="col">Campañas</th><th scope="col">Actividades</th></tr></thead>
+ <tbody>
+ <tr><th scope="row">Rechazo social y desconocimiento</th><td>1, 3</td><td>1, 2, 3, 4</td></tr>
+ <tr><th scope="row">Población pequeña y reciente, vulnerable a la mortalidad por causas humanas</th><td>2, 3</td><td>2, 5, 6</td></tr>
+ </tbody>
+ </table>
+ <p class="prosa">Cada campaña y cada actividad ataca al menos una de las dos causas, y cada puesto del organigrama aparece en al menos una. El conflicto con la ganadería se explica como contexto; corresponde al programa oficial y al seguro por ataque de depredadores.</p>
+ </div>
 </section>
 
 <!-- 9. Ciclo de vida -->
 <section class="seccion fondo-2" id="ciclo" aria-labelledby="t-ciclo">
-  <div class="contenedor">
-    <p class="etiqueta">Ciclo de vida</p>
-    <h2 id="t-ciclo">Un año en la vida de un lobo</h2>
-    <p class="entrada">Las fases se describen con los datos del programa oficial de conservación <a class="fuente" href="#f1">(CONANP, 2009)</a>, que en su mayor parte provienen de la población en cautiverio, y con el estudio de dieta en vida libre <a class="fuente" href="#f2">(Reyes-Díaz et al., 2022)</a>. El programa no indica la edad a la que la especie alcanza la madurez sexual; ese dato no se incluye.</p>
+ <div class="contenedor">
+ <p class="etiqueta">Ciclo de vida</p>
+ <h2 id="t-ciclo">Un año en la vida de un lobo</h2>
+ <p class="entrada">Las fases se describen con los datos del programa oficial de conservación, que en su mayor parte provienen de la población en cautiverio, y con el estudio de dieta en vida libre. El programa no indica la edad a la que la especie alcanza la madurez sexual; ese dato no se incluye.</p>
 
-    <ol class="ciclo">
-      <li class="fase">
-        <h3>Apareamiento y gestación</h3>
-        <div class="meses" role="img" aria-label="Enero a mayo; el apareamiento va de la segunda semana de enero a la tercera de abril">
-          <span class="mes">Ene</span><span class="mes">Feb</span><span class="mes">Mar</span><span class="mes">Abr</span><span class="mes">May</span>
-          <span class="meses-rango" style="--ini:0.25;--fin:3.75" aria-hidden="true"></span>
-        </div>
-        <p>Las hembras tienen un solo periodo de celo al año, que suele iniciar en la segunda mitad del invierno. En la población en cautiverio el apareamiento va de la segunda semana de enero a la tercera de abril, y la mayoría de los eventos reproductivos exitosos ocurre entre la segunda semana de febrero y la primera de marzo. La gestación dura unos 63 días. Solo se reproduce la pareja alfa de cada manada. <a class="fuente" href="#f1">CONANP (2009, p. 15)</a></p>
-      </li>
-      <li class="fase">
-        <h3>Nacimiento</h3>
-        <div class="meses" role="img" aria-label="Enero a mayo; los nacimientos van de la primera semana de abril a la primera de mayo">
-          <span class="mes">Ene</span><span class="mes">Feb</span><span class="mes">Mar</span><span class="mes">Abr</span><span class="mes">May</span>
-          <span class="meses-rango" style="--ini:3;--fin:4.25" aria-hidden="true"></span>
-        </div>
-        <p>Los nacimientos se presentan de la primera semana de abril a la primera de mayo, concentrados en la tercera semana de abril. Cada camada consta de 3 a 7 crías, y la proporción de machos y hembras al nacer es cercana a 1:1. En México, la primera camada nacida en libertad se registró en 2014. <a class="fuente" href="#f1">CONANP (2009, p. 15)</a>; <a class="fuente" href="#f2">Reyes-Díaz et al. (2022, sección "Introducción")</a></p>
-        <figure class="fase-foto">
-          <picture>
-            <source srcset="img/f7-madre-cria.webp" type="image/webp">
-            <img src="img/f7-madre-cria.jpg" width="1100" height="734" alt="Hembra de lobo mexicano echada sobre tierra con una cría pequeña junto a su cabeza." loading="lazy">
-          </picture>
-          <figcaption class="fuente">Hembra y cría de lobo mexicano en cautiverio. Bob Haarmans, 2016. CC BY 2.0. La ficha no indica el lugar. <a href="#foto-f7">Crédito completo</a>.</figcaption>
-        </figure>
-      </li>
-      <li class="fase">
-        <h3>Crecimiento</h3>
-        <p>Durante el crecimiento, el paso de la leche materna a la carne se relaciona con la aparición y la madurez de los dientes. Es la etapa más frágil: en poblaciones sin intervención humana muere en promedio el 45 % de las crías de alrededor de un año. <a class="fuente" href="#f1">CONANP (2009, pp. 15 y 22)</a></p>
-        <figure class="fase-foto">
-          <picture>
-            <source srcset="img/f7b-cria-brookfield.webp" type="image/webp">
-            <img src="img/f7b-cria-brookfield.jpg" width="1100" height="733" alt="Cría de lobo mexicano de pelaje oscuro, sentada entre hierba, mirando a la cámara." loading="lazy">
-          </picture>
-          <figcaption class="fuente">Cría de lobo mexicano en cautiverio, zoológico de Brookfield, Estados Unidos. Bob Haarmans, 2016. CC BY 2.0. Recortada. <a href="#foto-f7b">Crédito completo</a>.</figcaption>
-        </figure>
-      </li>
-      <li class="fase">
-        <h3>Juventud y dispersión</h3>
-        <p>A los pocos años, los hijos mayores abandonan la manada y viven solitarios hasta encontrar pareja, o conservan ese carácter toda su vida. El programa llama dispersión a ese proceso, en el que los jóvenes se separan de su grupo natal y ocupan nuevos territorios; es la vía por la que los lobos liberados se expanden. <a class="fuente" href="#f1">CONANP (2009, pp. 15 y 20)</a></p>
-      </li>
-      <li class="fase">
-        <h3>Adultez y reproducción</h3>
-        <p>El adulto pesa entre 21 y 41 kilogramos y mide de 140 a 180 centímetros del hocico a la cola. Vive en manadas organizadas alrededor de la pareja alfa, que es la única que se reproduce. En México su dieta registra 25 presas silvestres y tres domésticas; la principal es el venado cola blanca. <a class="fuente" href="#f1">CONANP (2009, pp. 14-15)</a>; <a class="fuente" href="#f2">Reyes-Díaz et al. (2022, sección "Resumen")</a></p>
-      </li>
-      <li class="fase">
-        <h3>Longevidad y mortalidad</h3>
-        <p>En cautiverio ha llegado a vivir hasta 15 años; en libertad se calcula que vive entre 7 y 8. Las causas de muerte son enfermedades, mala nutrición, heridas, peleas dentro de la manada y el conflicto con el ganado; sin intervención humana muere en promedio el 10 % de los adultos cada año. <a class="fuente" href="#f1">CONANP (2009, pp. 14 y 22)</a></p>
-      </li>
-    </ol>
-  </div>
+ <ol class="ciclo">
+ <li class="fase">
+ <h3>Apareamiento y gestación</h3>
+ <div class="meses" role="img" aria-label="Enero a mayo; el apareamiento va de la segunda semana de enero a la tercera de abril">
+ <span class="mes">Ene</span><span class="mes">Feb</span><span class="mes">Mar</span><span class="mes">Abr</span><span class="mes">May</span>
+ <span class="meses-rango" style="--ini:0.25;--fin:3.75" aria-hidden="true"></span>
+ </div>
+ <p>Las hembras tienen un solo periodo de celo al año, que suele iniciar en la segunda mitad del invierno. En la población en cautiverio el apareamiento va de la segunda semana de enero a la tercera de abril, y la mayoría de los eventos reproductivos exitosos ocurre entre la segunda semana de febrero y la primera de marzo. La gestación dura unos 63 días. Solo se reproduce la pareja alfa de cada manada.</p>
+ </li>
+ <li class="fase">
+ <h3>Nacimiento</h3>
+ <div class="meses" role="img" aria-label="Enero a mayo; los nacimientos van de la primera semana de abril a la primera de mayo">
+ <span class="mes">Ene</span><span class="mes">Feb</span><span class="mes">Mar</span><span class="mes">Abr</span><span class="mes">May</span>
+ <span class="meses-rango" style="--ini:3;--fin:4.25" aria-hidden="true"></span>
+ </div>
+ <p>Los nacimientos se presentan de la primera semana de abril a la primera de mayo, concentrados en la tercera semana de abril. Cada camada consta de 3 a 7 crías, y la proporción de machos y hembras al nacer es cercana a 1:1. En México, la primera camada nacida en libertad se registró en 2014.;</p>
+ <figure class="fase-foto">
+ <picture>
+ <source srcset="img/f7-madre-cria.webp" type="image/webp">
+ <img src="img/f7-madre-cria.jpg" width="1100" height="734" alt="Hembra de lobo mexicano echada sobre tierra con una cría pequeña junto a su cabeza." loading="lazy">
+ </picture>
+ <figcaption class="fuente">Hembra y cría de lobo mexicano en cautiverio. Bob Haarmans, 2016. CC BY 2.0. La ficha no indica el lugar. <a href="#foto-f7">Crédito completo</a>.</figcaption>
+ </figure>
+ </li>
+ <li class="fase">
+ <h3>Crecimiento</h3>
+ <p>Durante el crecimiento, el paso de la leche materna a la carne se relaciona con la aparición y la madurez de los dientes. Es la etapa más frágil: en poblaciones sin intervención humana muere en promedio el 45 % de las crías de alrededor de un año.</p>
+ <figure class="fase-foto">
+ <picture>
+ <source srcset="img/f7b-cria-brookfield.webp" type="image/webp">
+ <img src="img/f7b-cria-brookfield.jpg" width="1100" height="733" alt="Cría de lobo mexicano de pelaje oscuro, sentada entre hierba, mirando a la cámara." loading="lazy">
+ </picture>
+ <figcaption class="fuente">Cría de lobo mexicano en cautiverio, zoológico de Brookfield, Estados Unidos. Bob Haarmans, 2016. CC BY 2.0. Recortada. <a href="#foto-f7b">Crédito completo</a>.</figcaption>
+ </figure>
+ </li>
+ <li class="fase">
+ <h3>Juventud y dispersión</h3>
+ <p>A los pocos años, los hijos mayores abandonan la manada y viven solitarios hasta encontrar pareja, o conservan ese carácter toda su vida. El programa llama dispersión a ese proceso, en el que los jóvenes se separan de su grupo natal y ocupan nuevos territorios; es la vía por la que los lobos liberados se expanden.</p>
+ </li>
+ <li class="fase">
+ <h3>Adultez y reproducción</h3>
+ <p>El adulto pesa entre 21 y 41 kilogramos y mide de 140 a 180 centímetros del hocico a la cola. Vive en manadas organizadas alrededor de la pareja alfa, que es la única que se reproduce. En México su dieta registra 25 presas silvestres y tres domésticas; la principal es el venado cola blanca.;</p>
+ </li>
+ <li class="fase">
+ <h3>Longevidad y mortalidad</h3>
+ <p>En cautiverio ha llegado a vivir hasta 15 años; en libertad se calcula que vive entre 7 y 8. Las causas de muerte son enfermedades, mala nutrición, heridas, peleas dentro de la manada y el conflicto con el ganado; sin intervención humana muere en promedio el 10 % de los adultos cada año.</p>
+ </li>
+ </ol>
+ </div>
 </section>
 
 <!-- 10. Fuentes y créditos -->
 <section class="seccion" id="fuentes" aria-labelledby="t-fuentes">
-  <div class="contenedor">
-    <p class="etiqueta">Fuentes</p>
-    <h2 id="t-fuentes">Fuentes y créditos</h2>
-    <p class="entrada">Cada cifra de esta página lleva su cita entre paréntesis; estas son las entradas completas, en formato APA, del trabajo escrito.</p>
+ <div class="contenedor">
+ <p class="etiqueta">Fuentes</p>
+ <h2 id="t-fuentes">Fuentes y créditos</h2>
+ <p class="entrada">Todo lo que dice esta página sale de estas fuentes, las mismas del trabajo escrito, en formato APA.</p>
 
-    <h3 class="sub">Bibliografía</h3>
-    <ol class="biblio">
-      <li id="f5">Anaya-Zamora, V., López-González, C. A. y Pineda-López, R. F. (2017). Factores asociados al conflicto humano-carnívoro en un Área Natural Protegida en el centro de México. <i>Ecosistemas y Recursos Agropecuarios</i>, <i>4</i>(11), 381-393. <a href="https://doi.org/10.19136/era.a4n11.1108">https://doi.org/10.19136/era.a4n11.1108</a></li>
-      <li id="f15">Arellano, A. (2026, 17 de febrero). <i>Lobo mexicano: crecen los riesgos genéticos, conflictos con la ganadería y amenaza legal a 28 años de su reinserción</i>. Mongabay Latam. <a href="https://es.mongabay.com/2026/02/lobo-mexicano-riesgos-geneticos-conflictos-ganaderia-amenaza-legal/">https://es.mongabay.com/2026/02/lobo-mexicano-riesgos-geneticos-conflictos-ganaderia-amenaza-legal/</a></li>
-      <li id="f1">Comisión Nacional de Áreas Naturales Protegidas. (2009). <i>Programa de acción para la conservación de la especie: Lobo gris mexicano (Canis lupus baileyi)</i>. Secretaría de Medio Ambiente y Recursos Naturales. <a href="https://www.gob.mx/cms/uploads/attachment/file/251983/PACE_Lobo_Mexicano_2009.pdf">https://www.gob.mx/cms/uploads/attachment/file/251983/PACE_Lobo_Mexicano_2009.pdf</a></li>
-      <li id="d2">Comisión Nacional de Áreas Naturales Protegidas. (2015). <i>Lobo mexicano (Canis lupus baileyi)</i>. Programa de Conservación de Especies en Riesgo. <a href="https://conanp.gob.mx/conanp/dominios/especies/WEB/lobo-mexicano.php">https://conanp.gob.mx/conanp/dominios/especies/WEB/lobo-mexicano.php</a></li>
-      <li id="d1">Comisión Nacional para el Conocimiento y Uso de la Biodiversidad. (s.f.). <i>Lobo mexicano (Canis lupus subsp. baileyi)</i>. Enciclovida. Recuperado el 16 de septiembre de 2026, de <a href="https://enciclovida.mx/especies/38345-canis-lupus-baileyi">https://enciclovida.mx/especies/38345-canis-lupus-baileyi</a></li>
-      <li id="f10">Esparza-Carlos, J. P., Gerritsen, P. R. W., López-Parraguirre, S. A., García-Rojas, M. D. y Peña-Mondragón, J. L. (2019). Cómo perciben los niños el jaguar, <i>Panthera onca</i> (Carnivora: Felidae) en Jalisco, México. <i>Revista de Biología Tropical</i>, <i>67</i>(3), 380-395. <a href="https://www.scielo.sa.cr/scielo.php?script=sci_arttext&amp;pid=S0034-77442019000300380">https://www.scielo.sa.cr/scielo.php?script=sci_arttext&amp;pid=S0034-77442019000300380</a></li>
-      <li id="f14">Olguín Lacunza, M. (2021, 29 de abril). <i>UNAM busca salvar al lobo mexicano de la extinción</i>. UNAM Global. <a href="https://unamglobal.unam.mx/global_revista/unam-busca-salvar-al-lobo-mexicano-de-la-extincion/">https://unamglobal.unam.mx/global_revista/unam-busca-salvar-al-lobo-mexicano-de-la-extincion/</a></li>
-      <li id="f16">Procuraduría Federal de Protección al Ambiente. (2019, 9 de diciembre). <i>Identificación de grandes carnívoros silvestres en México</i>. Gobierno de México. <a href="https://www.gob.mx/profepa/articulos/89627">https://www.gob.mx/profepa/articulos/89627</a></li>
-      <li id="f2">Reyes-Díaz, J. L., Lara Díaz, N. E. y López-González, C. A. (2022). ¡Qué dientes tan grandes tienes! Un vistazo a la dieta del lobo mexicano. <i>Revista Digital Universitaria</i>, <i>23</i>(2). <a href="https://doi.org/10.22201/cuaieed.16076079e.2022.23.2.2">https://doi.org/10.22201/cuaieed.16076079e.2022.23.2.2</a></li>
-      <li id="f3">Secretaría de Medio Ambiente y Recursos Naturales. (2010, 30 de diciembre). <i>Norma Oficial Mexicana NOM-059-SEMARNAT-2010, Protección ambiental—Especies nativas de México de flora y fauna silvestres—Categorías de riesgo y especificaciones para su inclusión, exclusión o cambio—Lista de especies en riesgo</i>. Diario Oficial de la Federación. <a href="https://dof.gob.mx/nota_detalle.php?codigo=5173091&amp;fecha=30/12/2010">https://dof.gob.mx/nota_detalle.php?codigo=5173091&amp;fecha=30/12/2010</a></li>
-      <li id="f4">Secretaría de Medio Ambiente y Recursos Naturales. (2019, 14 de noviembre). <i>Modificación del Anexo Normativo III, Lista de especies en riesgo de la Norma Oficial Mexicana NOM-059-SEMARNAT-2010</i>. Diario Oficial de la Federación. <a href="https://dof.gob.mx/nota_detalle.php?codigo=5578808&amp;fecha=14/11/2019">https://dof.gob.mx/nota_detalle.php?codigo=5578808&amp;fecha=14/11/2019</a></li>
-    </ol>
+ <h3 class="sub">Bibliografía</h3>
+ <ol class="biblio">
+ <li id="f5">Anaya-Zamora, V., López-González, C. A. y Pineda-López, R. F. (2017). Factores asociados al conflicto humano-carnívoro en un Área Natural Protegida en el centro de México. <i>Ecosistemas y Recursos Agropecuarios</i>, <i>4</i>(11), 381-393. <a href="https://doi.org/10.19136/era.a4n11.1108">https://doi.org/10.19136/era.a4n11.1108</a></li>
+ <li id="f15">Arellano, A. (2026, 17 de febrero). <i>Lobo mexicano: crecen los riesgos genéticos, conflictos con la ganadería y amenaza legal a 28 años de su reinserción</i>. Mongabay Latam. <a href="https://es.mongabay.com/2026/02/lobo-mexicano-riesgos-geneticos-conflictos-ganaderia-amenaza-legal/">https://es.mongabay.com/2026/02/lobo-mexicano-riesgos-geneticos-conflictos-ganaderia-amenaza-legal/</a></li>
+ <li id="f1">Comisión Nacional de Áreas Naturales Protegidas. (2009). <i>Programa de acción para la conservación de la especie: Lobo gris mexicano (Canis lupus baileyi)</i>. Secretaría de Medio Ambiente y Recursos Naturales. <a href="https://www.gob.mx/cms/uploads/attachment/file/251983/PACE_Lobo_Mexicano_2009.pdf">https://www.gob.mx/cms/uploads/attachment/file/251983/PACE_Lobo_Mexicano_2009.pdf</a></li>
+ <li id="d2">Comisión Nacional de Áreas Naturales Protegidas. (2015). <i>Lobo mexicano (Canis lupus baileyi)</i>. Programa de Conservación de Especies en Riesgo. <a href="https://conanp.gob.mx/conanp/dominios/especies/WEB/lobo-mexicano.php">https://conanp.gob.mx/conanp/dominios/especies/WEB/lobo-mexicano.php</a></li>
+ <li id="d1">Comisión Nacional para el Conocimiento y Uso de la Biodiversidad. (s.f.). <i>Lobo mexicano (Canis lupus subsp. baileyi)</i>. Enciclovida. Recuperado el 16 de septiembre de 2026, de <a href="https://enciclovida.mx/especies/38345-canis-lupus-baileyi">https://enciclovida.mx/especies/38345-canis-lupus-baileyi</a></li>
+ <li id="f10">Esparza-Carlos, J. P., Gerritsen, P. R. W., López-Parraguirre, S. A., García-Rojas, M. D. y Peña-Mondragón, J. L. (2019). Cómo perciben los niños el jaguar, <i>Panthera onca</i> (Carnivora: Felidae) en Jalisco, México. <i>Revista de Biología Tropical</i>, <i>67</i>(3), 380-395. <a href="https://www.scielo.sa.cr/scielo.php?script=sci_arttext&amp;pid=S0034-77442019000300380">https://www.scielo.sa.cr/scielo.php?script=sci_arttext&amp;pid=S0034-77442019000300380</a></li>
+ <li id="f14">Olguín Lacunza, M. (2021, 29 de abril). <i>UNAM busca salvar al lobo mexicano de la extinción</i>. UNAM Global. <a href="https://unamglobal.unam.mx/global_revista/unam-busca-salvar-al-lobo-mexicano-de-la-extincion/">https://unamglobal.unam.mx/global_revista/unam-busca-salvar-al-lobo-mexicano-de-la-extincion/</a></li>
+ <li id="f16">Procuraduría Federal de Protección al Ambiente. (2019, 9 de diciembre). <i>Identificación de grandes carnívoros silvestres en México</i>. Gobierno de México. <a href="https://www.gob.mx/profepa/articulos/89627">https://www.gob.mx/profepa/articulos/89627</a></li>
+ <li id="f2">Reyes-Díaz, J. L., Lara Díaz, N. E. y López-González, C. A. (2022). ¡Qué dientes tan grandes tienes! Un vistazo a la dieta del lobo mexicano. <i>Revista Digital Universitaria</i>, <i>23</i>(2). <a href="https://doi.org/10.22201/cuaieed.16076079e.2022.23.2.2">https://doi.org/10.22201/cuaieed.16076079e.2022.23.2.2</a></li>
+ <li id="f3">Secretaría de Medio Ambiente y Recursos Naturales. (2010, 30 de diciembre). <i>Norma Oficial Mexicana NOM-059-SEMARNAT-2010, Protección ambiental—Especies nativas de México de flora y fauna silvestres—Categorías de riesgo y especificaciones para su inclusión, exclusión o cambio—Lista de especies en riesgo</i>. Diario Oficial de la Federación. <a href="https://dof.gob.mx/nota_detalle.php?codigo=5173091&amp;fecha=30/12/2010">https://dof.gob.mx/nota_detalle.php?codigo=5173091&amp;fecha=30/12/2010</a></li>
+ <li id="f4">Secretaría de Medio Ambiente y Recursos Naturales. (2019, 14 de noviembre). <i>Modificación del Anexo Normativo III, Lista de especies en riesgo de la Norma Oficial Mexicana NOM-059-SEMARNAT-2010</i>. Diario Oficial de la Federación. <a href="https://dof.gob.mx/nota_detalle.php?codigo=5578808&amp;fecha=14/11/2019">https://dof.gob.mx/nota_detalle.php?codigo=5578808&amp;fecha=14/11/2019</a></li>
+ </ol>
 
-    <h3 class="sub">Fotos y mapa</h3>
-    <p class="prosa">Todas las imágenes son de Wikimedia Commons, con licencia libre. Ninguna fue generada ni retocada con inteligencia artificial; solo se recortaron y redimensionaron. En Commons no hay fotos de lobos en libertad en Chihuahua: los lobos de esta página son ejemplares en cautiverio o fotos de archivo, y cada pie lo dice.</p>
-    <ul class="creditos">
-      <li id="foto-f1">Apertura. <i>Canis lupus baileyi running</i>. Jim Clark, U.S. Fish and Wildlife Service, 6 de diciembre de 2001. Dominio público (obra de un empleado del USFWS). <a href="https://commons.wikimedia.org/wiki/File:Canis_lupus_baileyi_running.jpg">Página del archivo en Commons</a>. Redimensionada.</li>
-      <li id="foto-f8">Territorio. <i>Sierra Madre Occidental vista desde el Cerro Grande</i>. Levi bernardo, 17 de septiembre de 2018. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.es">CC BY-SA 3.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Sierra_Madre_Occidental_vista_desde_el_Cerro_Grande.jpg">Página del archivo en Commons</a>. Recortada y redimensionada.</li>
-      <li id="foto-m1">Mapa base. <i>BlankMap-North America-Subdivisions</i>. NuclearVacuum, 2010. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.es">CC BY-SA 3.0</a>. <a href="https://commons.wikimedia.org/wiki/File:BlankMap-North_America-Subdivisions.svg">Página del archivo en Commons</a>. Recortado a México y el suroeste de Estados Unidos, simplificado y coloreado; el derivado se comparte bajo la misma licencia.</li>
-      <li id="foto-f4">Exterminio. <i>Mexican wolf standing near rocky area</i>. Warren Garst (1922-2016), marzo de 1967; Colorado State University Libraries, a través de la Digital Public Library of America. <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Mexican_wolf_standing_near_rocky_area_-_DPLA_-_69235c8159276749d179f6e74fcb03b5.jpg">Página del archivo en Commons</a>. Redimensionada.</li>
-      <li id="foto-f6">1971. <i>El lobo mexicano en el zoológico de Durango</i>. Vaquita marina, 6 de abril de 2026. <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:El_lobo_mexicano_en_el_zool%C3%B3gico_de_Durango.jpg">Página del archivo en Commons</a>. Redimensionada.</li>
-      <li id="foto-f5">2026. <i>Lobo mexicano en cautiverio</i>. Esparquilin, 12 de octubre de 2021. <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Lobo_mexicano_en_cautiverio.jpg">Página del archivo en Commons</a>. Recortada y redimensionada.</li>
-      <li id="foto-f7">Nacimiento. <i>Mom and kit 2</i>. Bob Haarmans, 11 de julio de 2016. <a href="https://creativecommons.org/licenses/by/2.0/deed.es">CC BY 2.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Mom_and_kit_2_-_28175826591.jpg">Página del archivo en Commons</a>. Redimensionada.</li>
-      <li id="foto-f7b">Crecimiento. <i>Mexican Wolf Pup</i>. Bob Haarmans, 3 de julio de 2016. <a href="https://creativecommons.org/licenses/by/2.0/deed.es">CC BY 2.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Mexican_Wolf_Pup_(27447950683).jpg">Página del archivo en Commons</a>. Recortada y redimensionada.</li>
-    </ul>
+ <h3 class="sub">Fotos y mapa</h3>
+ <p class="prosa">Todas las imágenes son de Wikimedia Commons, con licencia libre. Ninguna fue generada ni retocada con inteligencia artificial; solo se recortaron y redimensionaron. En Commons no hay fotos de lobos en libertad en Chihuahua: los lobos de esta página son ejemplares en cautiverio o fotos de archivo, y cada pie lo dice.</p>
+ <ul class="creditos">
+ <li id="foto-f1">Apertura. <i>Canis lupus baileyi running</i>. Jim Clark, U.S. Fish and Wildlife Service, 6 de diciembre de 2001. Dominio público (obra de un empleado del USFWS). <a href="https://commons.wikimedia.org/wiki/File:Canis_lupus_baileyi_running.jpg">Página del archivo en Commons</a>. Redimensionada.</li>
+ <li id="foto-f8">Territorio. <i>Sierra Madre Occidental vista desde el Cerro Grande</i>. Levi bernardo, 17 de septiembre de 2018. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.es">CC BY-SA 3.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Sierra_Madre_Occidental_vista_desde_el_Cerro_Grande.jpg">Página del archivo en Commons</a>. Recortada y redimensionada.</li>
+ <li id="foto-m1">Mapa base. <i>BlankMap-North America-Subdivisions</i>. NuclearVacuum, 2010. <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.es">CC BY-SA 3.0</a>. <a href="https://commons.wikimedia.org/wiki/File:BlankMap-North_America-Subdivisions.svg">Página del archivo en Commons</a>. Recortado a México y el suroeste de Estados Unidos, simplificado y coloreado; el derivado se comparte bajo la misma licencia.</li>
+ <li id="foto-f4">Exterminio. <i>Mexican wolf standing near rocky area</i>. Warren Garst (1922-2016), marzo de 1967; Colorado State University Libraries, a través de la Digital Public Library of America. <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Mexican_wolf_standing_near_rocky_area_-_DPLA_-_69235c8159276749d179f6e74fcb03b5.jpg">Página del archivo en Commons</a>. Redimensionada.</li>
+ <li id="foto-f6">1971. <i>El lobo mexicano en el zoológico de Durango</i>. Vaquita marina, 6 de abril de 2026. <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:El_lobo_mexicano_en_el_zool%C3%B3gico_de_Durango.jpg">Página del archivo en Commons</a>. Redimensionada.</li>
+ <li id="foto-f5">2026. <i>Lobo mexicano en cautiverio</i>. Esparquilin, 12 de octubre de 2021. <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Lobo_mexicano_en_cautiverio.jpg">Página del archivo en Commons</a>. Recortada y redimensionada.</li>
+ <li id="foto-f7">Nacimiento. <i>Mom and kit 2</i>. Bob Haarmans, 11 de julio de 2016. <a href="https://creativecommons.org/licenses/by/2.0/deed.es">CC BY 2.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Mom_and_kit_2_-_28175826591.jpg">Página del archivo en Commons</a>. Redimensionada.</li>
+ <li id="foto-f7b">Crecimiento. <i>Mexican Wolf Pup</i>. Bob Haarmans, 3 de julio de 2016. <a href="https://creativecommons.org/licenses/by/2.0/deed.es">CC BY 2.0</a>. <a href="https://commons.wikimedia.org/wiki/File:Mexican_Wolf_Pup_(27447950683).jpg">Página del archivo en Commons</a>. Recortada y redimensionada.</li>
+ </ul>
 
-    <h3 class="sub">Tipografía y código</h3>
-    <p class="prosa">Tipografías Newsreader (Production Type) y Atkinson Hyperlegible Next (Braille Institute), con licencia Open Font License, servidas por Google Fonts. La página es HTML, CSS y JavaScript sin dependencias; todo movimiento se desactiva cuando el sistema pide reducir el movimiento.</p>
-  </div>
+ <h3 class="sub">Tipografía y código</h3>
+ <p class="prosa">Tipografías Newsreader (Production Type) y Atkinson Hyperlegible Next (Braille Institute), con licencia Open Font License, servidas por Google Fonts. La página es HTML, CSS y JavaScript sin dependencias; todo movimiento se desactiva cuando el sistema pide reducir el movimiento.</p>
+ </div>
 </section>
 
 </main>
 
 <footer class="pie">
-  <div class="contenedor">
-    <p>Cuidando a México, A.C. es una asociación ficticia creada para el proyecto "Empresa ecológica: animal en peligro de extinción". Las campañas y actividades se proponen para un ciclo escolar y no se han ejecutado.</p>
-    <p class="fuente">Proyecto escolar, Tapachula, Chiapas, septiembre de 2026. Página hecha por el equipo de Cuidando a México, A.C. como parte del proyecto.</p>
-  </div>
+ <div class="contenedor">
+ <p>Cuidando a México, A.C. es una asociación ficticia creada para el proyecto "Empresa ecológica: animal en peligro de extinción". Las campañas y actividades se proponen para un ciclo escolar y no se han ejecutado.</p>
+ <p class="fuente">Proyecto escolar, Tapachula, Chiapas, septiembre de 2026. Página hecha por el equipo de Cuidando a México, A.C. como parte del proyecto.</p>
+ </div>
 </footer>
 
 <script src="js/pagina.js" defer></script>
