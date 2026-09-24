@@ -253,37 +253,11 @@ figcaption { margin-top: var(--e-2); max-width: var(--medida); }
 .dof-lectura { margin: 0; }
 
 /* 9. Tres razones --------------------------------------------------------- */
-.razones { list-style: none; display: grid; gap: 0; }
-.razon { display: grid; grid-template-columns: auto 1fr; gap: var(--e-4); align-items: start; padding-top: var(--e-5); padding-bottom: var(--e-5); }
-
-/* La cabecera se queda fija (título, entrada y la línea) mientras pasan las razones;
-   se suelta cuando termina la última. Cada razón ocupa al menos una pantalla. */
-.razones-cabeza { padding-bottom: var(--e-4); border-bottom: 1px solid var(--linea); background: var(--fondo); }
-.razones-paso { color: var(--acento); }
-.razones-paso[hidden] { display: none; }
-.js .razones-cabeza { position: sticky; top: var(--barra-alto); z-index: 4; }
-/* Al entrar en los pasos, la cabecera se encoge para dejarle la pantalla a cada punto. */
-.js .razones-cabeza .entrada { transition: opacity var(--dur-1) var(--curva); }
-.js .razones-cabeza.compacta .entrada { display: none; }
-.js .razones-cabeza.compacta h2 { font-size: var(--t-2); }
-.js .razon { min-height: calc(100svh - var(--barra-alto) - var(--cabeza-alto, 240px)); scroll-snap-align: center; scroll-margin-block: var(--e-4); align-content: center; }
-.js .razon > * { transition: opacity var(--dur-2) var(--curva), transform var(--dur-2) var(--curva); }
-.js .razon.espera > * { opacity: 0; transform: translateY(10px); }
-/* El ajuste por pasos solo se enciende mientras la sección está en pantalla; fuera de ella el scroll es normal. */
-html.js { scroll-padding-top: calc(var(--barra-alto) + var(--cabeza-alto, 240px)); }
-html.js.escena-activa { scroll-snap-type: y mandatory; }
-@media (prefers-reduced-motion: reduce) {
-  .js .razon.espera > * { opacity: 1; transform: none; }
-  html.js.escena-activa { scroll-snap-type: none; }
-}
+.razones { list-style: none; display: grid; gap: var(--e-6); }
+.razon { display: grid; grid-template-columns: auto 1fr; gap: var(--e-4); align-items: start; border-top: 1px solid var(--linea); padding-top: var(--e-5); }
 .razon-num { color: var(--acento); opacity: 0.55; line-height: 0.8; }
 .razon h3 { margin-bottom: var(--e-3); }
-.razon-quien { border-left: 3px solid var(--linea); padding-left: var(--e-3); margin-top: var(--e-4); }
-.razon-quien summary { cursor: pointer; list-style: none; font-weight: 700; min-height: 44px; display: flex; align-items: center; gap: var(--e-2); }
-.razon-quien summary::-webkit-details-marker { display: none; }
-.razon-quien summary::after { content: "+"; color: var(--acento); font-size: 1.2em; }
-.razon-quien[open] summary::after { content: "2"; }
-.razon-quien p { margin: 0 0 var(--e-3); }
+.razon-quien { border-left: 3px solid var(--linea); padding-left: var(--e-3); }
 @media (min-width: 900px) {
   .razon { grid-template-columns: 1fr minmax(0, var(--medida)) 1fr; gap: var(--e-6); }
   .razon .razon-num { grid-column: 1; justify-self: end; }
@@ -401,11 +375,4 @@ html.js.escena-activa { scroll-snap-type: y mandatory; }
     scroll-behavior: auto !important;
   }
   .js .eslogan-1, .js .eslogan-2 { opacity: 1; transform: none; animation: none; }
-}
-
-
-/* En pantallas altas y anchas el bloque "Quién la atiende" no necesita ocultarse. */
-@media (min-width: 900px) and (min-height: 800px) {
-  .razon-quien summary { display: none; }
-  .razon-quien > p { display: block; }
 }
